@@ -11,9 +11,9 @@ package br.com.sistemaproposta.model;
  */
 public class Assessoria {
     
-    int id;
-    String nome;
-    String cnpj;
-    int idEstado;
-    int idCidade;
+    private int id;
+    private String nome;
+    private String cnpj;
+    private Cidade cidade;
+    
 }

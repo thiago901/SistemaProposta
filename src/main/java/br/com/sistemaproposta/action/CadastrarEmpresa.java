@@ -5,6 +5,7 @@
  */
 package br.com.sistemaproposta.action;
 
+import br.com.sistemaproposta.util.Executavel;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Thiago
  */
-public interface Executavel {
-    public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
+public class CadastrarEmpresa implements Executavel{
+    
+    public CadastrarEmpresa(){
+        System.out.println("Objeto Construido");
+    }
+    
+    @Override
+    public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("metodo executado");
+        return "";
+    }
 }

@@ -5,8 +5,8 @@
  */
 package br.com.sistemaproposta.controller;
 
+import br.com.sistemaproposta.ReflexaoController.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,14 +17,29 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Thiago
  */
-@WebServlet(name = "assessoria", urlPatterns = {"/inputAssessoria"})
-public class assessoria extends HttpServlet {
+@WebServlet(name = "ServletController", urlPatterns = {"/input"})
+public class ServletController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paramAction = req.getParameter("action");
-    }
+        
+        String action = req.getParameter("action");
+        String pacote = "br.com.sistemaproposta.action.";
 
+         new Reflexao()
+                .refleteClasse(pacote+action)
+                .criaInstancia()
+                .getMetodo("execute",HttpServletRequest.class,HttpServletResponse.class)
+                .invoca(req,resp);
+        
+        
+        
+        
+        
+        
+        
+        
+    }
     
 
 }

@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.sistemaproposta.model;
+package br.com.sistemaproposta.controller;
 
 /**
  *
- * @author Thiago
+ * @author Thiago Santos Rocha
  */
-public class Administradora {
-    
-    private int id;
-    private String nome;
-    private String cnpj;
-    private Cidade cidade;
+
+public class EmpresaController {
+
+
+
     
 }
