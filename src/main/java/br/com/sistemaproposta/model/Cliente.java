@@ -5,6 +5,8 @@
  */
 package br.com.sistemaproposta.model;
 
+import br.com.sistemaproposta.controller.ClienteController;
+
 /**
  *
  * @author Thiago
@@ -12,19 +14,19 @@ package br.com.sistemaproposta.model;
 public class Cliente {
     private int id;
     private String nome;
-    private String pf_pj;
+    private String cpf_cnpj;
     private Cidade cidade;
 
-    public Cliente(int id, String nome, String pf_pj, Cidade cidade) {
+    public Cliente(int id, String nome, String cpf_cnpj, Cidade cidade) {
         this.id = id;
         this.nome = nome;
-        this.pf_pj = pf_pj;
+        this.cpf_cnpj = cpf_cnpj;
         this.cidade = cidade;
     }
 
     public Cliente(String nome, String pf_pj, Cidade cidade) {
         this.nome = nome;
-        this.pf_pj = pf_pj;
+        this.cpf_cnpj = pf_pj;
         this.cidade = cidade;
     }
 
@@ -42,12 +44,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getPf_pj() {
-        return pf_pj;
+    public String getCpf_Cnpj() {
+        return cpf_cnpj;
     }
 
-    public void setPf_pj(String pf_pj) {
-        this.pf_pj = pf_pj;
+    public void setCpf_Cnpj(String pf_pj) {
+        this.cpf_cnpj = pf_pj;
     }
 
     public Cidade getCidade() {
@@ -56,6 +58,10 @@ public class Cliente {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+    }
+
+    public void salvar() {
+        ClienteController.salvar(this);
     }
     
     

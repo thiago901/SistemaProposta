@@ -19,17 +19,27 @@ create table assessoria_administradora(
     foreign key(idAssessoria) references assessoria(id),
     foreign key(idAdministradora) references adminitradora(id)
 );
-create table uf(
-	id integer auto_increment primary key,
-    ufSigla varchar(2),
-    ufNome varchar(50),
-    regiao varchar(50)
+
+
+
+/*===========================*/
+CREATE TABLE uf (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    uf VARCHAR(2) UNIQUE,
+    estado VARCHAR(50),
+    capital VARCHAR(50),
+    regiao VARCHAR(15),
+    pais VARCHAR(2)
+    
+    
 );
-create table cidade(
-	id integer auto_increment primary key,
-    idUf integer,
-    nomeCidade varchar(50)
+CREATE TABLE cidade (
+	id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    nomeCidade VARCHAR(50),
+    idUf Integer,
+    FOREIGN KEY (idUf) REFERENCES uf (id)
 );
+
 
 create table cliente(
 	id integer auto_increment primary key,

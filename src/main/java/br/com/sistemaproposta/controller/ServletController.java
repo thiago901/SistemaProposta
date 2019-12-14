@@ -7,6 +7,7 @@ package br.com.sistemaproposta.controller;
 
 import br.com.sistemaproposta.ReflexaoController.*;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,11 +27,22 @@ public class ServletController extends HttpServlet {
         String action = req.getParameter("action");
         String pacote = "br.com.sistemaproposta.action.";
 
-         new Reflexao()
+        Object retorno = new Reflexao()
                 .refleteClasse(pacote+action)
                 .criaInstancia()
                 .getMetodo("execute",HttpServletRequest.class,HttpServletResponse.class)
                 .invoca(req,resp);
+        
+        
+        String array[] = String.valueOf(retorno).split(":");
+        
+        if(array[0].equals("redirect")){
+            resp.sendRedirect(array[1]);
+        }else{
+            RequestDispatcher rd = req.getRequestDispatcher(array[1]);
+            rd.forward(req, resp);
+            
+        }
         
         
         
