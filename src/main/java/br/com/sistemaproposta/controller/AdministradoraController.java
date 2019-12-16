@@ -5,14 +5,21 @@
  */
 package br.com.sistemaproposta.controller;
 
+import br.com.sistemaproposta.DAO.AdministradoraDAO;
+import br.com.sistemaproposta.model.Administradora;
+
 /**
  *
  * @author Thiago Santos Rocha
  */
 
-public class EmpresaController {
+public class AdministradoraController {
 
-
+    public static void salvar(Administradora adm){
+        AdministradoraDAO.salvar(adm);
+        
+        
+    }
 
     
 }

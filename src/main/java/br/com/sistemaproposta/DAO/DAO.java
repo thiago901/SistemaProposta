@@ -8,8 +8,6 @@ package br.com.sistemaproposta.DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -39,4 +37,16 @@ public class DAO {
         }
         
     }
+    protected static boolean rodarSQL(String sql){
+        try {
+             abriConexao().prepareStatement(sql);
+             
+             return true;
+           
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro de sintaxe",ex);
+        }
+        
+    }
+    
 }
