@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author Thiago
  */
-public class DAO {
+public class DAO implements AutoCloseable{
     protected static final String USER="root";
     protected static final String PASSWORD="adminadmin";
     protected static final String URL = "jdbc:mysql://localhost:3306/sistemaProposta?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
@@ -37,16 +37,13 @@ public class DAO {
         }
         
     }
-    protected static boolean rodarSQL(String sql){
-        try {
-             abriConexao().prepareStatement(sql);
-             
-             return true;
-           
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro de sintaxe",ex);
-        }
+
+    @Override
+    public void close() throws Exception {
         
+        conexao.close();
+        System.out.println("Fechou conexao");
     }
+    
     
 }

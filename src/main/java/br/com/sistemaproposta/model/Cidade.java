@@ -18,6 +18,12 @@ public class Cidade {
         this.id = id;
         this.estado = estado;
     }
+
+    public Cidade(int id, String cidade, Estado estado) {
+        this.id = id;
+        this.cidade = cidade;
+        this.estado = estado;
+    }
     
     
 

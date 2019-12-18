@@ -1,6 +1,6 @@
 create database sistemaProposta;
 use sistemaProposta;
-create table adminitradora(
+create table administradora(
 	id integer auto_increment primary key,
     nome varchar(50),
     cnpj varchar(14)
@@ -17,12 +17,9 @@ create table assessoria_administradora(
     idAdministradora integer,
     primary key(idAssessoria,idAdministradora),
     foreign key(idAssessoria) references assessoria(id),
-    foreign key(idAdministradora) references adminitradora(id)
+    foreign key(idAdministradora) references administradora(id)
 );
 
-
-
-/*===========================*/
 CREATE TABLE uf (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     uf VARCHAR(2) UNIQUE,
@@ -51,13 +48,12 @@ create table cliente(
     foreign key (idCidade) references cidade(id)
 );
 
+
 create table contrato(
-	numContrato integer primary key,
+	numContrato varchar(50) primary key,
     idCliente integer,
-    idAdministradora integer,
     idAssessoria integer,
     foreign key (idCliente) references cliente(id),
-    foreign key (idAdministradora) references adminitradora(id),
     foreign key (idAssessoria) references assessoria(id)
     
 );

@@ -17,5 +17,9 @@ public class ClienteController {
         ClienteDAO.salvar(c);
         
     }
+
+    public static Cliente getCliente(int codCliente) {
+        return ClienteDAO.getCliente(codCliente);
+    }
     
 }

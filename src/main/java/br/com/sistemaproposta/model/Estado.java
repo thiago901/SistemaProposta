@@ -11,6 +11,8 @@ package br.com.sistemaproposta.model;
  */
 public class Estado {
     private int id;
+    
+    private String uf;
     private String estado;
     private String capital;
     private String regiao;
@@ -19,6 +21,19 @@ public class Estado {
     public Estado(int id) {
         this.id = id;
     }
+
+    public Estado(int id, String uf, String estado, String capital, String regiao, String pais) {
+        this.id = id;
+        this.uf = uf;
+        this.estado = estado;
+        this.capital = capital;
+        this.regiao = regiao;
+        this.pais = pais;
+    }
+
+    
+    
+    
     
     
 

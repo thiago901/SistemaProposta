@@ -5,9 +5,12 @@
  */
 package br.com.sistemaproposta.DAO;
 
+import br.com.sistemaproposta.controller.CidadeController;
+import br.com.sistemaproposta.model.Cidade;
 import br.com.sistemaproposta.model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -29,9 +32,39 @@ public class ClienteDAO {
             
         } catch (SQLException ex) {
             throw new RuntimeException("Erro de sintaxe",ex);
+        }finally{
+            DAO.fecharConexao();
         }
+    }
 
-        DAO.fecharConexao();
+    public static Cliente getCliente(int codCliente) {
+        
+        
+        String sql ="select * from cliente where id = ?;";
+        Cliente cliente =null;
+        try {
+            PreparedStatement ps = DAO.abriConexao().prepareStatement(sql);
+            ps.setInt(1, codCliente);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                String cnpj_cpf = rs.getString("cnpj_cpf");
+                int idCidade = rs.getInt("idCidade");
+                
+                Cidade cid = CidadeController.getCidade(idCidade);
+                cliente= new Cliente(id, nome, cnpj_cpf,cid);
+                
+            }
+            
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro de sintaxe",ex);
+        }finally{
+            DAO.fecharConexao();
+        }
+        
+        return cliente;
+    
     }
         
     

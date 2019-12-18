@@ -17,9 +17,9 @@ public class AdministradoraController {
 
     public static void salvar(Administradora adm){
         AdministradoraDAO.salvar(adm);
-        
-        
     }
-
+    public static Administradora getAdministradora(int cod){
+        return AdministradoraDAO.getAdministradora(cod);
+    }
     
 }

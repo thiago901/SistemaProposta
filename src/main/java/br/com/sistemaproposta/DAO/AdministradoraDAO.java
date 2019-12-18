@@ -8,16 +8,34 @@ package br.com.sistemaproposta.DAO;
 import br.com.sistemaproposta.model.Administradora;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Thiago
  */
 public class AdministradoraDAO {
-
+    
+    public static Administradora getAdministradora(int codAdm){
+        String sql="select * from administradora where id = ?";
+        try {
+            PreparedStatement ps = DAO.abriConexao().prepareStatement(sql);
+            ps.setInt(1, codAdm);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                String cnpj = rs.getString("cnpj");
+                return new Administradora(id, nome, cnpj);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro de sintaxe",ex);
+        }finally{
+            DAO.fecharConexao();
+        }
+        return null;
+    }
     public static void salvar(Administradora adm) {
         Connection conexao = DAO.abriConexao();
         String sql ="insert into administradora (nome,cnpj) values(?,?)";
@@ -28,9 +46,9 @@ public class AdministradoraDAO {
             ps.execute();
         } catch (SQLException ex) {
             throw new RuntimeException("Erro de sintaxe",ex);
+        }finally{
+            DAO.fecharConexao();
         }
-        
-        DAO.fecharConexao();
         
     }
     

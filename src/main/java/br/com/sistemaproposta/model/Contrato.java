@@ -5,6 +5,8 @@
  */
 package br.com.sistemaproposta.model;
 
+import br.com.sistemaproposta.controller.ContratoController;
+
 /**
  *
  * @author Thiago
@@ -12,6 +14,36 @@ package br.com.sistemaproposta.model;
 public class Contrato {
     String contrato;
     Cliente c;
-    Administradora adm;
     Assessoria asse;
+
+    public Contrato(String contrato, Cliente c, Assessoria asse) {
+        this.contrato = contrato;
+        this.c = c;
+        this.asse = asse;
+    }
+
+    public String getContrato() {
+        return contrato;
+    }
+
+    public Cliente getCliente() {
+        return c;
+    }
+
+    public void setCliente(Cliente c) {
+        this.c = c;
+    }
+
+    public Assessoria getAssessoria() {
+        return asse;
+    }
+
+    public void setAssessoria(Assessoria asse) {
+        this.asse = asse;
+    }
+    
+    public void salvar() {
+        ContratoController.salvar(this);
+    }
+    
 }
