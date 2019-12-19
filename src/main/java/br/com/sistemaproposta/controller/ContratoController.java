@@ -17,5 +17,9 @@ public class ContratoController {
     public static void salvar(Contrato contrato) {
         ContratoDAO.salvar(contrato);
     }
+
+    public static Contrato getContrato(String numContrato) {
+        return ContratoDAO.getContrato(numContrato);
+    }
     
 }

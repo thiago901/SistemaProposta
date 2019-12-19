@@ -60,7 +60,7 @@ create table contrato(
 
 CREATE TABLE divida (
     id INTEGER auto_increment,
-    numContrato INTEGER,
+    numContrato varchar(50),
     vlrPrincipal FLOAT,
     vlrMultas FLOAT,
     vlrJuros FLOAT,
@@ -86,6 +86,7 @@ CREATE TABLE proposta (
     vlrDespesas FLOAT,
     perc_HO FLOAT,
     idParcelas INTEGER,
+    tipoProposta varchar(20),
     StatusPagamento VARCHAR (10),
     StatusProposta VARCHAR(10),
     dtProposta DATE,

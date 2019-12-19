@@ -22,7 +22,7 @@ public class Contrato {
         this.asse = asse;
     }
 
-    public String getContrato() {
+    public String getNumContrato() {
         return contrato;
     }
 
