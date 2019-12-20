@@ -5,11 +5,16 @@
  */
 package br.com.sistemaproposta.DAO;
 
+import br.com.sistemaproposta.controller.ContratoController;
+import br.com.sistemaproposta.model.Contrato;
 import br.com.sistemaproposta.model.Divida;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,6 +54,43 @@ public class DividaDAO {
         }finally{
             DAO.fecharConexao();
         }
+    }
+
+    public static Divida getDivida(int idDivida) {
+        String sql="select * from divida where id=?";
+        try {
+            PreparedStatement ps = DAO.abriConexao().prepareStatement(sql);
+            ps.setInt(1, idDivida);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int id =rs.getInt("id");
+                String numContrato = rs.getString("numContrato");
+                float vlrPrincipal= rs.getFloat("vlrPrincipal");
+                float vlrMultas= rs.getFloat("vlrMultas");
+                float vlrJuros= rs.getFloat("vlrJuros");
+                float vlrDespesas= rs.getFloat("vlrDespesas");
+                float perc_HO= rs.getFloat("perc_HO");
+                float vlrCategoria= rs.getFloat("vlrCategoria");
+                float perc_SaldoDevedor= rs.getFloat("perc_SaldoDevedor");
+                float vlrPOS= rs.getFloat("vlrPOS");
+                float vlrDebitoBem= rs.getFloat("vlrDebitoBem");
+                Date dtAtraso=rs.getDate("dtAtraso"); 
+                Date dtAtualizacao= rs.getDate("dtAtualizacao");
+                
+                Contrato c = ContratoController.getContrato(numContrato);
+                return new Divida(idDivida, c, vlrPrincipal, 
+                        vlrMultas, vlrJuros, vlrDespesas, 
+                        perc_HO, vlrCategoria, perc_SaldoDevedor, 
+                        vlrPOS, vlrDebitoBem, dtAtraso,dtAtualizacao);
+                
+                
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro de sintaxe",ex);
+        }finally{
+            DAO.fecharConexao();
+        }
+        return null;
     }
 
 }

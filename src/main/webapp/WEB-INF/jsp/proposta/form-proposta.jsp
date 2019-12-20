@@ -16,9 +16,11 @@
     <div class="tela-fundo"></div>
     <div class="main">
       <h1>Proposta</h1>
-      <form>
+      <form action="/SistemaProposta/input?action=CadastrarProposta" method="Post">
 
         <div class="dadosProposta">
+          <label for="idDivida">cod Divida</label>
+          <input id="idDivida" type="text" name="idDivida" value="">
           <label for="vlrPrincipal">R$ Principal</label>
           <input id="vlrPrincipal" type="text" name="principal" value="">
 
@@ -40,7 +42,8 @@
             <input id="rd-atualizacao" type="radio" name="tipo-proposta" value="Atualizacao">
             <label for="rd-atualizacao">Atualização</label>
           </div>
-          
+          <label for="qtdParcela">Qtd Parcela</label>
+          <input id="qtdParcela" type="text" name="qtd-parcela" value="">
 
 
 

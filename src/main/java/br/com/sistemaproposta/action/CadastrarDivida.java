@@ -35,7 +35,7 @@ public class CadastrarDivida implements Executavel{
         float vlrCategoria = Float.parseFloat(req.getParameter("categoria"));
         float percSaldoDev = Float.parseFloat(req.getParameter("perc-saldo-devedor"));
         float vlrPOS = Float.parseFloat(req.getParameter("POS"));
-        float vlrDebBem = Float.parseFloat(req.getParameter("POS"));
+        float vlrDebBem = Float.parseFloat(req.getParameter("debitos-bem"));
         String dtAtrasoStr =req.getParameter("dt-atraso");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dtAtraso;

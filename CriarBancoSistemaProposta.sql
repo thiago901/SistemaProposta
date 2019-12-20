@@ -85,39 +85,25 @@ CREATE TABLE proposta (
     vlrJuros FLOAT,
     vlrDespesas FLOAT,
     perc_HO FLOAT,
-    idParcelas INTEGER,
+    qtdParcelas INTEGER,
     tipoProposta varchar(20),
     StatusPagamento VARCHAR (10),
     StatusProposta VARCHAR(10),
     dtProposta DATE,
     dtVencimento DATE,
+    idContraProposta INTEGER,
     foreign key (idDivida) references divida(id)
     
 );
 
-
-CREATE TABLE contraProposta (
-    id INTEGER auto_increment primary KEY,
-    idProposta INTEGER,
-    vlrPrincipal FLOAT,
-    vlrMultas FLOAT,
-    vlrJuros FLOAT,
-    vlrDespesas FLOAT,
-    perc_HO FLOAT,
-    idParcelas INTEGER,
-    StatusPagamento VARCHAR(50),
-    StatusProposta VARCHAR(50),
-    dtProposta DATE,
-    dtVencimento DATE,
-    foreign key (idProposta) references proposta (id)
-);
  CREATE TABLE parcela (
-	id integer auto_increment,
     idProposta INTEGER not null,
     nParcela INTEGER not null,
     vlrApagar FLOAT not null,
-    PRIMARY KEY (id,idProposta, nParcela),
-    foreign key (idProposta) references contraProposta(id),
+	dtVencimento date,
+    dtPagamento date,
+    statusPagamento Varchar(20),
+    PRIMARY KEY (idProposta, nParcela),
     foreign key (idProposta) references proposta(id)
 );
 

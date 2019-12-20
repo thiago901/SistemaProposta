@@ -33,7 +33,7 @@ public class Divida {
     private final Date dtAtualizacao;
     private List<Proposta> propostas =new ArrayList<>();
 
-    public Divida(int numDivida, Contrato contrato, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHonorarios, float vlrCategoria, float percSaldoDevedor, float vlrPos, float vlrDebitoBem, Date dtAtraso) {
+    public Divida(int numDivida, Contrato contrato, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHonorarios, float vlrCategoria, float percSaldoDevedor, float vlrPos, float vlrDebitoBem, Date dtAtraso, Date dtAtualizacao) {
         this.numDivida = numDivida;
         this.contrato = contrato;
         this.vlrPrincipal = vlrPrincipal;
@@ -46,8 +46,10 @@ public class Divida {
         this.vlrPos = vlrPos;
         this.vlrDebitoBem = vlrDebitoBem;
         this.dtAtraso = dtAtraso;
-        this.dtAtualizacao = Calendar.getInstance().getTime();
+        this.dtAtualizacao = dtAtualizacao;
     }
+
+    
     public Divida(Contrato contrato, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHonorarios, float vlrCategoria, float percSaldoDevedor, float vlrPos, float vlrDebitoBem, Date dtAtraso) {
         this.contrato = contrato;
         this.vlrPrincipal = vlrPrincipal;

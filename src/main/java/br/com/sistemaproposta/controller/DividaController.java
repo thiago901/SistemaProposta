@@ -17,5 +17,9 @@ public class DividaController {
     public static void salvar(Divida divida) {
         DividaDAO.salvar(divida);
     }
+
+    public static Divida getDivida(int idDivida) {
+        return DividaDAO.getDivida(idDivida);
+    }
     
 }
