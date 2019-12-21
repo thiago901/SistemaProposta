@@ -17,5 +17,9 @@ public class PropostaController {
     public static void salvar(Proposta p) {
         PropostaDAO.salvar(p);
     }
+
+    public static Proposta getProposta(int idProposta) {
+        return PropostaDAO.getProposta(idProposta);
+    }
     
 }

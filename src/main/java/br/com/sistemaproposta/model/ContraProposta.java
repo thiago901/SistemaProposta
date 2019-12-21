@@ -5,6 +5,7 @@
  */
 package br.com.sistemaproposta.model;
 
+import br.com.sistemaproposta.controller.ContraPropostaController;
 import br.com.sistemaproposta.controller.PropostaController;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Thiago
  */
-public class Proposta {
+public class ContraProposta {
     
     private int id;
     private Divida divida;
@@ -31,9 +32,12 @@ public class Proposta {
     private String statusProposta;
     private Date dtProposta;
     private Date dtVencimento;
-    private List<Proposta> contraProposta = new ArrayList<>();
+    private Proposta proposta;
 
-    public Proposta(int id, Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta, String statusPagamento, String statusProposta, Date dtProposta, Date dtVencimento) {
+    public ContraProposta(int id, Divida divida, float vlrPrincipal, 
+            float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, 
+            int qtdParcela, String tipoProsposta, String statusPagamento, 
+            String statusProposta, Date dtProposta, Date dtVencimento,Proposta proposta) {
         this.id = id;
         this.divida = divida;
         this.vlrPrincipal = vlrPrincipal;
@@ -47,9 +51,12 @@ public class Proposta {
         this.statusProposta = statusProposta;
         this.dtProposta = dtProposta;
         this.dtVencimento = dtVencimento;
+        this.proposta = proposta;
     }
     
-    public Proposta(Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta) {
+    public ContraProposta(Divida divida, float vlrPrincipal, float vlrMultas, 
+            float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, 
+            String tipoProsposta,Proposta proposta) {
         this.divida = divida;
         this.vlrPrincipal = vlrPrincipal;
         this.vlrMultas = vlrMultas;
@@ -62,6 +69,7 @@ public class Proposta {
         this.statusProposta = "Pendente";
         this.dtProposta = Calendar.getInstance().getTime();
         this.dtVencimento = this.dtProposta;
+        this.proposta = proposta;
     }
 
     public int getId() {
@@ -153,13 +161,21 @@ public class Proposta {
         return dtProposta;
     }
 
+    public Proposta getProposta() {
+        return proposta;
+    }
+
+    public void setProposta(Proposta proposta) {
+        this.proposta = proposta;
+    }
+
 
     public Date getDtVencimento() {
         return dtVencimento;
     }
     
     public void salvar(){
-        PropostaController.salvar(this);
+        ContraPropostaController.salvar(this);
     }
     
    

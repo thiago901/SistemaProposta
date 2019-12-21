@@ -6,29 +6,31 @@
 package br.com.sistemaproposta.DAO;
 
 import br.com.sistemaproposta.controller.DividaController;
+import br.com.sistemaproposta.controller.PropostaController;
+import br.com.sistemaproposta.model.ContraProposta;
 import br.com.sistemaproposta.model.Divida;
 import br.com.sistemaproposta.model.Proposta;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 /**
  *
  * @author Thiago
  */
-public class PropostaDAO {
+public class ContraPropostaDAO {
 
-    public static void salvar(Proposta p) {
-        String sql="insert into proposta (idDivida, vlrPrincipal, "
+    public static void salvar(ContraProposta p) {
+        String sql="insert into Proposta (idDivida, vlrPrincipal, "
                                             + "vlrMultas, vlrJuros, vlrDespesas, "
                                             + "perc_HO, qtdParcelas, StatusPagamento, "
-                                            + "StatusProposta, dtProposta, dtVencimento)"
-                + "Values(?,?,?,?,?,?,?,?,?,?,?)";
+                                            + "StatusProposta, dtProposta, dtVencimento,idContraProposta)"
+                + "Values(?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = DAO.abriConexao().prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, p.getDivida().getNumDivida());
@@ -42,6 +44,7 @@ public class PropostaDAO {
             ps.setString(9, p.getStatusProposta());
             ps.setDate(10, new Date(p.getDtProposta().getTime()));
             ps.setDate(11, new Date(p.getDtVencimento().getTime()));
+            ps.setInt(12, p.getProposta().getId());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             
@@ -57,7 +60,7 @@ public class PropostaDAO {
         }
     }
 
-    private static void criarParcelas(int chaveProposta, Proposta p) {
+    private static void criarParcelas(int chaveProposta, ContraProposta p) {
         
         String sql="insert into parcela (idProposta,nParcela,vlrApagar,dtVencimento,dtPagamento,statusPagamento) "
                     + "Values(?,?,?,?,?,?)";
@@ -83,11 +86,11 @@ public class PropostaDAO {
         
     }
 
-    public static Proposta getProposta(int idProposta) {
+    public static ContraProposta getContraProposta(int idContraProposta) {
         String sql ="select * from proposta where id=?";
         try {
             PreparedStatement ps = DAO.abriConexao().prepareStatement(sql);
-            ps.setInt(1, idProposta);
+            ps.setInt(1, idContraProposta);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 int id =rs.getInt("id"); 
@@ -103,12 +106,14 @@ public class PropostaDAO {
                 String StatusProposta=rs.getString("StatusProposta"); 
                 Date dtProposta=rs.getDate("dtProposta"); 
                 Date dtVencimento=rs.getDate("dtVencimento"); 
+                int idProposta=rs.getInt("idContraProposta"); 
                 
                 Divida divida = DividaController.getDivida(idDivida);
+                Proposta proposta = PropostaController.getProposta(idProposta);
                 
-                return new Proposta(id, divida, vlrPrincipal, vlrMultas, vlrJuros,
+                return new ContraProposta(id, divida, vlrPrincipal, vlrMultas, vlrJuros,
                         vlrDespesas, perc_HO, qtdParcelas, tipoProposta, 
-                        StatusPagamento, StatusProposta, dtProposta, dtVencimento);
+                        StatusPagamento, StatusProposta, dtProposta, dtVencimento,proposta);
             }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro de sintaxe",ex);
