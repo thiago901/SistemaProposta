@@ -1,0 +1,93 @@
+
+
+/*Cores
+  Cinza: #e5dfdf;
+  Verde-claro: #6ba8a9;
+  Verde-Medio: #357376;
+  Verde-Escuro: #1d4d4f;
+*/
+
+*,label,li,table{
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+.filtros{
+  /*border-bottom: 2px solid #b2bec3;*/
+  padding: 0px 0px 15px 0px;
+}
+.contrato,.selecao,.data{
+  background: none;
+  border: none;
+  border-bottom: 2px solid #b2bec3;
+  height: 35px;
+  font-size: 100%;
+  width: 15%;
+  padding: 0px 0px 0px 10px;
+}
+.data{
+  text-align: center;
+}
+
+.buscar,.limpar{
+
+  border: none;
+  width: 100px;
+  height: 35px;
+  font-size: 90%;
+}
+.buscar{
+  background: #6ba8a9;
+  color: #fff;
+}
+.limpar{
+  background: #efefef;
+  color: #000;
+}
+.buscar:hover{
+  background:#357376;
+  transition: .5s;
+  cursor: pointer;
+
+
+}
+.limpar:hover{
+  background:#ff7675;
+  color: #fff;
+  transition: .5s;
+  cursor: pointer;
+
+}
+
+
+.imgAbrir{
+  width: 30px;
+  height: 30px;
+}
+.imgAbrir:hover{
+  cursor: pointer;
+}
+
+body{
+  background: #e5dfdf;
+}
+.container{
+  margin: 50px 20px;
+  text-align: center;
+}
+.container table{
+  margin: 25px auto;
+  width: 90%;
+
+}
+.container tr{
+  border-bottom: 1px solid #b2bec3;
+  color: #2d3436;
+}
+.container tr:nth-child(2n){
+  background: #6ba8a9;
+}
+.container td,th{
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+}

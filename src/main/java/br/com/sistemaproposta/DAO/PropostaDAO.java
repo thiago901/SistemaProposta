@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -116,6 +118,43 @@ public class PropostaDAO {
             DAO.fecharConexao();
         }
         return null;
+    }
+
+    public static List<Proposta> getPropostas() {
+        String sql ="select * from proposta";
+        List<Proposta> listaPropostas = new ArrayList<>();
+        try {
+            PreparedStatement ps = DAO.abriConexao().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int id =rs.getInt("id"); 
+                int idDivida=rs.getInt("idDivida"); 
+                float vlrPrincipal=rs.getFloat("vlrPrincipal"); 
+                float vlrMultas=rs.getFloat("vlrMultas"); 
+                float vlrJuros=rs.getFloat("vlrJuros"); 
+                float vlrDespesas=rs.getFloat("vlrDespesas"); 
+                float perc_HO=rs.getFloat("perc_HO"); 
+                int qtdParcelas=rs.getInt("qtdParcelas"); 
+                String tipoProposta=rs.getString("tipoProposta"); 
+                String StatusPagamento=rs.getString("StatusPagamento"); 
+                String StatusProposta=rs.getString("StatusProposta"); 
+                Date dtProposta=rs.getDate("dtProposta"); 
+                Date dtVencimento=rs.getDate("dtVencimento"); 
+                
+                Divida divida = DividaController.getDivida(idDivida);
+                
+                Proposta p= new Proposta(id, divida, vlrPrincipal, vlrMultas, vlrJuros,
+                        vlrDespesas, perc_HO, qtdParcelas, tipoProposta, 
+                        StatusPagamento, StatusProposta, dtProposta, dtVencimento);
+                listaPropostas.add(p);
+            }
+            return listaPropostas;
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro de sintaxe",ex);
+        }finally{
+            DAO.fecharConexao();
+        }
+        
     }
     
 }

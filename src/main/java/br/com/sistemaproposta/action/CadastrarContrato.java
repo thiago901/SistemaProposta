@@ -5,8 +5,11 @@
  */
 package br.com.sistemaproposta.action;
 
+import br.com.sistemaproposta.DAO.AdministradoraDAO;
+import br.com.sistemaproposta.controller.AdministradoraController;
 import br.com.sistemaproposta.controller.AssessoriaController;
 import br.com.sistemaproposta.controller.ClienteController;
+import br.com.sistemaproposta.model.Administradora;
 import br.com.sistemaproposta.model.Assessoria;
 import br.com.sistemaproposta.model.Cliente;
 import br.com.sistemaproposta.model.Contrato;
@@ -28,11 +31,13 @@ public class CadastrarContrato implements Executavel{
         String numContrato = req.getParameter("contrato");
         int codCliente = Integer.parseInt(req.getParameter("cod-cliente"));
         int codAssessoria = Integer.parseInt(req.getParameter("cod-assessoria"));
+        int codAdministradora = Integer.parseInt(req.getParameter("cod-administradora"));
         
         
         Assessoria assessoria = AssessoriaController.getAssessoria(codAssessoria);
         Cliente cliente = ClienteController.getCliente(codCliente);
-        Contrato contrato = new Contrato(numContrato, cliente, assessoria);
+        Administradora adm  = AdministradoraController.getAdministradora(codAdministradora);
+        Contrato contrato = new Contrato(numContrato, cliente, assessoria,adm);
         contrato.salvar();
         
         

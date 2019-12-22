@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package br.com.sistemaproposta.controller;
-
 import br.com.sistemaproposta.DAO.PropostaDAO;
 import br.com.sistemaproposta.model.Proposta;
+import java.util.List;
 
 /**
  *
@@ -21,5 +21,7 @@ public class PropostaController {
     public static Proposta getProposta(int idProposta) {
         return PropostaDAO.getProposta(idProposta);
     }
-    
+    public static List<Proposta> getPropostas(){
+        return PropostaDAO.getPropostas();
+    }
 }

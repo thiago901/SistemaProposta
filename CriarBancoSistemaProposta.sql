@@ -53,8 +53,10 @@ create table contrato(
 	numContrato varchar(50) primary key,
     idCliente integer,
     idAssessoria integer,
+    idAdministradora integer,
     foreign key (idCliente) references cliente(id),
-    foreign key (idAssessoria) references assessoria(id)
+    foreign key (idAssessoria) references assessoria(id),
+    foreign key (idAdministradora) references administradora(id)
     
 );
 

@@ -27,6 +27,9 @@
 
                 <label for="cod-assessoria">Assessoria</label>
                 <input type="text" name="cod-assessoria" value="">
+                
+                <label for="cod-administradora">Administradora</label>
+                <input type="text" name="cod-administradora" value="">
 
                 <button type="submit" name="button">Salvar</button>
             </form>
