@@ -13,7 +13,7 @@ import br.com.sistemaproposta.model.Administradora;
 import br.com.sistemaproposta.model.Assessoria;
 import br.com.sistemaproposta.model.Cliente;
 import br.com.sistemaproposta.model.Contrato;
-import br.com.sistemaproposta.util.Executavel;
+import br.com.sistemaproposta.utilInterface.Executavel;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

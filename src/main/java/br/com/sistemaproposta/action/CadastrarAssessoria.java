@@ -8,7 +8,7 @@ package br.com.sistemaproposta.action;
 import br.com.sistemaproposta.controller.AdministradoraController;
 import br.com.sistemaproposta.model.Administradora;
 import br.com.sistemaproposta.model.Assessoria;
-import br.com.sistemaproposta.util.Executavel;
+import br.com.sistemaproposta.utilInterface.Executavel;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

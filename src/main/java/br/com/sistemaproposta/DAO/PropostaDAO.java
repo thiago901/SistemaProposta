@@ -41,7 +41,7 @@ public class PropostaDAO {
             ps.setFloat(6, p.getPercHO());
             ps.setInt(7, p.getQtdParcela());
             ps.setString(8, p.getStatusPagamento());
-            ps.setString(9, p.getStatusProposta());
+            ps.setString(9, "Resolver essa historia");
             ps.setDate(10, new Date(p.getDtProposta().getTime()));
             ps.setDate(11, new Date(p.getDtVencimento().getTime()));
             ps.executeUpdate();
@@ -110,7 +110,7 @@ public class PropostaDAO {
                 
                 return new Proposta(id, divida, vlrPrincipal, vlrMultas, vlrJuros,
                         vlrDespesas, perc_HO, qtdParcelas, tipoProposta, 
-                        StatusPagamento, StatusProposta, dtProposta, dtVencimento);
+                        StatusPagamento, null, dtProposta, dtVencimento);
             }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro de sintaxe",ex);
@@ -145,7 +145,7 @@ public class PropostaDAO {
                 
                 Proposta p= new Proposta(id, divida, vlrPrincipal, vlrMultas, vlrJuros,
                         vlrDespesas, perc_HO, qtdParcelas, tipoProposta, 
-                        StatusPagamento, StatusProposta, dtProposta, dtVencimento);
+                        StatusPagamento, null, dtProposta, dtVencimento);
                 listaPropostas.add(p);
             }
             return listaPropostas;

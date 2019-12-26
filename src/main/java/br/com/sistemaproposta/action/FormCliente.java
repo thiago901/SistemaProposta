@@ -5,7 +5,7 @@
  */
 package br.com.sistemaproposta.action;
 
-import br.com.sistemaproposta.util.Executavel;
+import br.com.sistemaproposta.utilInterface.Executavel;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

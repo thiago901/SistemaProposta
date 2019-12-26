@@ -7,10 +7,6 @@
   Verde-Escuro: #1d4d4f;
 */
 
-*,label,li,table{
-  font-family: 'Poppins', sans-serif;
-  box-sizing: border-box;
-}
 .filtros{
   /*border-bottom: 2px solid #b2bec3;*/
   padding: 0px 0px 15px 0px;
@@ -67,9 +63,6 @@
   cursor: pointer;
 }
 
-body{
-  background: #e5dfdf;
-}
 .container{
   margin: 50px 20px;
   text-align: center;
@@ -86,6 +79,13 @@ body{
 .container tr:nth-child(2n){
   background: #6ba8a9;
 }
+
+.container tbody tr:hover{
+  background: #fdcb6e;
+  transition: .2s;
+}
+
+
 .container td,th{
   padding: 5px;
   text-align: center;

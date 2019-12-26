@@ -1,0 +1,153 @@
+.container{
+  margin: 5px auto;
+  padding: 10px;
+  width: 90%;
+  height: 100%;
+  border: 2px solid #000;
+
+}
+
+.dadosGerais,.valoresDivida{
+  text-align: center;
+  display: grid;
+}
+.dadosGerais{
+  grid-template-columns: 33% 33% 33%;
+
+}
+.dadosDivida{
+  border: 1px solid #000;
+
+  margin: 0 auto;
+}
+.valoresDivida{
+  	grid-template-columns: 20% 20% 20% 20% 20%;
+}
+.textArea{
+  background: none;
+  padding: 5px;
+  width: 100%;
+  text-align: justify;
+}
+
+.resumo h6{
+  text-align: left;
+  padding: 2px;
+
+
+}
+.tipoProposta{
+  display:grid;
+  text-align: left;
+
+
+
+}
+
+.proposta-mensagem{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-top: 5px;
+
+
+}
+.dadosProposta{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 97%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  border: 1px solid #000;
+
+
+
+}
+.dadosProposta div{
+  padding: 5px;
+}
+.mensagens{
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #000;
+
+
+
+}
+
+.dadosDivida div{
+  padding: 5px;
+
+}
+.escreverMensagemEnviar{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
+
+
+}
+.escreveMensagem{
+  width: 100%;
+}
+
+
+/*===================botoes=====================*/
+.botoes {
+  text-align: right;
+  padding: 10px;
+
+}
+
+.btnAprovar,.btnRejeitar,.btnContraProposta,.btnEnviar{
+  border: none;
+  height: 35px;
+  font-size: 90%;
+}
+
+.btnAprovar:hover,.btnRejeitar:hover,.btnContraProposta:hover,.btnEnviar:hover{
+  cursor: pointer;
+  transition: .2s;
+}
+.btnAprovar{
+  background: #6ba8a9;
+  color: #fff;
+  width: 10%;
+
+}
+.btnAprovar:hover{
+  background: #1d4d4f;
+
+}
+.btnRejeitar{
+  background: #efefef;
+  color: #000;
+  width: 10%;
+}
+
+.btnRejeitar:hover{
+  background:#ff7675;
+  color: #fff;
+}
+.btnContraProposta{
+  background: #efefef;
+  color: #000;
+  width: 10%;
+}
+.btnContraProposta:hover{
+  background: #fdcb6e;
+  color: #fff;
+
+}
+.btnEnviar{
+
+
+  width: 100%;
+  margin-left: 5px;
+
+}
+.btnEnviar:hover{
+  background: #fdcb6e;
+  color: #fff;
+
+}

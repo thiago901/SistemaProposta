@@ -6,6 +6,8 @@
 package br.com.sistemaproposta.model;
 
 import br.com.sistemaproposta.controller.PropostaController;
+import br.com.sistemaproposta.utilInterface.StatusProposta;
+import br.com.sistemaproposta.utilmodel.PropostaPendente;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,12 +30,12 @@ public class Proposta {
     private List<Parcela> parcelas =new ArrayList<>();
     private String tipoProsposta;
     private String statusPagamento;
-    private String statusProposta;
+    private StatusProposta statusProposta;
     private Date dtProposta;
     private Date dtVencimento;
     private List<Proposta> contraProposta = new ArrayList<>();
 
-    public Proposta(int id, Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta, String statusPagamento, String statusProposta, Date dtProposta, Date dtVencimento) {
+    public Proposta(int id, Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta, String statusPagamento, StatusProposta statusProposta, Date dtProposta, Date dtVencimento) {
         this.id = id;
         this.divida = divida;
         this.vlrPrincipal = vlrPrincipal;
@@ -59,7 +61,7 @@ public class Proposta {
         this.qtdParcela = qtdParcela;
         this.tipoProsposta = tipoProsposta;
         this.statusPagamento = "Aberto";
-        this.statusProposta = "Pendente";
+        this.statusProposta = new PropostaPendente();
         this.dtProposta = Calendar.getInstance().getTime();
         this.dtVencimento = this.dtProposta;
     }
@@ -141,11 +143,11 @@ public class Proposta {
         this.statusPagamento = statusPagamento;
     }
 
-    public String getStatusProposta() {
+    public StatusProposta getStatusProposta() {
         return statusProposta;
     }
 
-    public void setStatusProposta(String statusProposta) {
+    public void setStatusProposta(StatusProposta statusProposta) {
         this.statusProposta = statusProposta;
     }
 
@@ -162,7 +164,23 @@ public class Proposta {
         PropostaController.salvar(this);
     }
     
-   
+    public void aprova(){
+        this.statusProposta.aprovar(this);
+    }
+    public void cancela(){
+        this.statusProposta.cancelar(this);
+    }
+    private void contraProposta(){
+        this.statusProposta.contraProposta(this);
+        
+    }public void pendente(){
+        this.statusProposta.pendente(this);
+    }
+    public void rejeita(){
+        this.statusProposta.rejeitar(this);
+    }
+    
+    
     
     
 }

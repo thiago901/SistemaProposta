@@ -8,7 +8,7 @@ package br.com.sistemaproposta.action;
 import br.com.sistemaproposta.controller.ContratoController;
 import br.com.sistemaproposta.model.Contrato;
 import br.com.sistemaproposta.model.Divida;
-import br.com.sistemaproposta.util.Executavel;
+import br.com.sistemaproposta.utilInterface.Executavel;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

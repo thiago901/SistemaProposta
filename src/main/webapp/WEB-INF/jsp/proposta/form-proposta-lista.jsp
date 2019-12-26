@@ -10,9 +10,10 @@
     <head>
         <meta charset="utf-8">
         <title>Lista Propostas</title>
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/lista-analise.css">
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lista-analise.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Poppins&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -71,7 +72,9 @@
                             <td class="tdValor"><c:out value="${p.getVlrPrincipal()}"/></td>
                             <td class="tdStatus"><c:out value="${p.getStatusProposta()}"/></td>
                             <td class="tdAbrir">
-                                <img src="img/arquivo.png" alt="icon de uma pagina" class="imgAbrir" >
+                                <a href="/SistemaProposta/input?action=AnaliseProposta&idProposta=${p.getId()}">
+                                    <img src="img/arquivo.png" alt="icon de uma pagina" class="imgAbrir" >
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>

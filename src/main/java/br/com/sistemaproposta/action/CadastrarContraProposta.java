@@ -10,7 +10,7 @@ import br.com.sistemaproposta.controller.PropostaController;
 import br.com.sistemaproposta.model.ContraProposta;
 import br.com.sistemaproposta.model.Divida;
 import br.com.sistemaproposta.model.Proposta;
-import br.com.sistemaproposta.util.Executavel;
+import br.com.sistemaproposta.utilInterface.Executavel;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

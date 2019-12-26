@@ -24,4 +24,9 @@ public class PropostaController {
     public static List<Proposta> getPropostas(){
         return PropostaDAO.getPropostas();
     }
+    
+    public static void aprovarProposta(){
+        
+    }
+    
 }
