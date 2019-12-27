@@ -12,32 +12,36 @@ import br.com.sistemaproposta.utilInterface.StatusProposta;
  *
  * @author Thiago
  */
-public class PropostaAprovada implements StatusProposta{
+public class PropostaCancelado implements StatusProposta{
+
+    @Override
+    public void pendente(Proposta p) {
+        throw new RuntimeException("Proposta cancelada");
+    }
 
     @Override
     public void aprovar(Proposta p) {
-        throw new RuntimeException("Proposta já está aprovada");
+        throw new RuntimeException("Proposta cancelada");
     }
 
     @Override
     public void rejeitar(Proposta p) {
-        throw new RuntimeException("Proposta aprovada não pode ser rejeitada");
+        throw new RuntimeException("Proposta cancelada");
     }
 
     @Override
     public void contraProposta(Proposta p) {
-        throw new RuntimeException("Proposta aprovada não é possivel criar uma contra proposta");
-    }
-
-    @Override
-    public void pendente(Proposta p) {
-        throw new RuntimeException("Proposta já está aprovada");
+        throw new RuntimeException("Proposta cancelada");
     }
 
     @Override
     public void cancelar(Proposta p) {
-        p.setStatusProposta(new PropostaCancelada());
+        throw new RuntimeException("Proposta já cancelada");
     }
-    
+
+    @Override
+    public String getStatusProposta() {
+        return "Cancelado";
+    }
     
 }

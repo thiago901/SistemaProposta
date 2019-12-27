@@ -38,5 +38,10 @@ public class PropostaRejeitada implements StatusProposta {
     public void cancelar(Proposta p) {
         throw new RuntimeException("Proposta foi rejeita, sendo assim, ela não será alterada");
     }
+
+    @Override
+    public String getStatusProposta() {
+        return "Rejeitada";
+    }
     
 }

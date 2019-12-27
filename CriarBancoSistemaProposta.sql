@@ -90,7 +90,7 @@ CREATE TABLE proposta (
     qtdParcelas INTEGER,
     tipoProposta varchar(20),
     StatusPagamento VARCHAR (10),
-    StatusProposta VARCHAR(10),
+    StatusProposta VARCHAR(14),
     dtProposta DATE,
     dtVencimento DATE,
     idContraProposta INTEGER,

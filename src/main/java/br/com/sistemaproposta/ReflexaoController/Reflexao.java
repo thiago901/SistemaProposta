@@ -5,7 +5,8 @@
  */
 package br.com.sistemaproposta.ReflexaoController;
 
-import br.com.sistemaproposta.ReflexaoController.ManipuladorClasse;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +27,22 @@ public class Reflexao {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+    
+    public Object retornaInstancia(String fqn) {
+        Class<?> st;
+        try {
+            st = Class.forName(fqn);
+            Constructor<?> declaredConstructor = st.getConstructor();
+            return declaredConstructor.newInstance();
+        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException  e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao refletir Classe "+fqn,e);
+        } catch(InvocationTargetException e){
+            e.printStackTrace();
+            throw new RuntimeException("Erro no construtor "+fqn,e);
+        }
+        
     }
 
  

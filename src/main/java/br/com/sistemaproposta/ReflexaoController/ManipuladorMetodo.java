@@ -38,6 +38,18 @@ public class ManipuladorMetodo {
         }
         
     }
+    public Object invoca(){
+        try {
+            Object retorno = this.metodo.invoke(this.instancia);
+            return retorno;
+        } catch (IllegalAccessException|IllegalArgumentException e) {
+            throw new RuntimeException(e);
+         
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException("Erro na construcao do metodo",e.getTargetException());
+        }
+        
+    }
     
     
 }

@@ -18,7 +18,7 @@ import java.util.List;
  * @author Thiago
  */
 public class Proposta {
-    
+
     private int id;
     private Divida divida;
     private float vlrPrincipal;
@@ -27,7 +27,7 @@ public class Proposta {
     private float vlrDespesas;
     private float percHO;
     private int qtdParcela;
-    private List<Parcela> parcelas =new ArrayList<>();
+    private List<Parcela> parcelas = new ArrayList<>();
     private String tipoProsposta;
     private String statusPagamento;
     private StatusProposta statusProposta;
@@ -50,7 +50,7 @@ public class Proposta {
         this.dtProposta = dtProposta;
         this.dtVencimento = dtVencimento;
     }
-    
+
     public Proposta(Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta) {
         this.divida = divida;
         this.vlrPrincipal = vlrPrincipal;
@@ -77,7 +77,6 @@ public class Proposta {
     public void setDivida(Divida divida) {
         this.divida = divida;
     }
-
 
     public float getVlrPrincipal() {
         return vlrPrincipal;
@@ -155,32 +154,34 @@ public class Proposta {
         return dtProposta;
     }
 
-
     public Date getDtVencimento() {
         return dtVencimento;
     }
-    
-    public void salvar(){
+
+    public void salvar() {
         PropostaController.salvar(this);
     }
-    
-    public void aprova(){
+
+    public void aprova() {
         this.statusProposta.aprovar(this);
     }
-    public void cancela(){
+
+    public void cancela() {
         this.statusProposta.cancelar(this);
     }
-    private void contraProposta(){
+
+    public void contraProposta() {
         this.statusProposta.contraProposta(this);
-        
-    }public void pendente(){
+
+    }
+
+    public void pendente() {
         this.statusProposta.pendente(this);
     }
-    public void rejeita(){
+
+    public void rejeitarProposta() {
         this.statusProposta.rejeitar(this);
+        PropostaController.alterarStatus(this);
     }
-    
-    
-    
-    
+
 }

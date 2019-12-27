@@ -21,7 +21,7 @@ public class PropostaPendente implements StatusProposta{
 
     @Override
     public void aprovar(Proposta p) {
-        p.setStatusProposta(new PropostaAprovada());
+        p.setStatusProposta(new PropostaAprovado());
     }
 
     @Override
@@ -31,12 +31,17 @@ public class PropostaPendente implements StatusProposta{
 
     @Override
     public void contraProposta(Proposta p) {
-        p.setStatusProposta(new PropostaContra());
+        p.setStatusProposta(new PropostaContraProposta());
     }
 
     @Override
     public void cancelar(Proposta p) {
         throw new RuntimeException("Proposta não pode ser cancelada");
+    }
+
+    @Override
+    public String getStatusProposta() {
+        return "Pendente";
     }
     
 }

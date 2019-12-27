@@ -17,5 +17,5 @@ public interface StatusProposta {
     void rejeitar(Proposta p);
     void contraProposta(Proposta p);
     void cancelar(Proposta p);
-    
+    String getStatusProposta();
 }

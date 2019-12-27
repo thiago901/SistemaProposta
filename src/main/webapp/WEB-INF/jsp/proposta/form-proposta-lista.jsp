@@ -70,7 +70,7 @@
                             </td>
                             <td class="tdAData"><c:out value="${p.getDtProposta()}"/></td>
                             <td class="tdValor"><c:out value="${p.getVlrPrincipal()}"/></td>
-                            <td class="tdStatus"><c:out value="${p.getStatusProposta()}"/></td>
+                            <td class="tdStatus"><c:out value="${p.getStatusProposta().getStatusProposta()}"/></td>
                             <td class="tdAbrir">
                                 <a href="/SistemaProposta/input?action=AnaliseProposta&idProposta=${p.getId()}">
                                     <img src="img/arquivo.png" alt="icon de uma pagina" class="imgAbrir" >

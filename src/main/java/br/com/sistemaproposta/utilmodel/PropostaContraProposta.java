@@ -12,7 +12,7 @@ import br.com.sistemaproposta.utilInterface.StatusProposta;
  *
  * @author Thiago
  */
-public class PropostaContra implements StatusProposta{
+public class PropostaContraProposta implements StatusProposta{
 
     @Override
     public void aprovar(Proposta p) {
@@ -37,6 +37,11 @@ public class PropostaContra implements StatusProposta{
     @Override
     public void cancelar(Proposta p) {
         throw new RuntimeException("Favor analisar contra proposta, está proposta não será alterada");
+    }
+
+    @Override
+    public String getStatusProposta() {
+        return "ContraProposta";
     }
     
 }

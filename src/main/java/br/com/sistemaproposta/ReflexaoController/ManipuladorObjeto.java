@@ -33,4 +33,14 @@ public class ManipuladorObjeto {
         
     }
     
+    public ManipuladorMetodo getMetodo(String executa) {
+        try {
+            Method metodo = this.instancia.getClass().getMethod(executa);
+            return new ManipuladorMetodo(instancia,metodo);
+        } catch (NoSuchMethodException|SecurityException e) {
+            throw new RuntimeException(e);
+        }
+        
+    }
+    
 }

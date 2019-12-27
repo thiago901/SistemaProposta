@@ -25,8 +25,8 @@ public class PropostaController {
         return PropostaDAO.getPropostas();
     }
     
-    public static void aprovarProposta(){
-        
+    public static void alterarStatus(Proposta p) {
+        PropostaDAO.alterarStatus(p);
     }
     
 }
