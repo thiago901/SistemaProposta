@@ -1,4 +1,9 @@
-    <div class="containerParcelas">
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="containerParcelas esconder">
+    <div class="divImg">
+        <img class="imgFechar" src="img/fechar.png" onclick="mostrarParcelas()">
+    </div>
       <table>
         <thead>
           <tr>
@@ -11,83 +16,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
-          <tr class="proposta">
-            <td class="nParcela">1</td>
-            <td class="Valor">R$ 750,00</td>
-            <td class="dtVencimento">01/02/219</td>
-            <td class="dtPagamento">01/01/2019</td>
-            <td class="tdStatus">Pendente</td>
-          </tr>
+            <c:forEach  items="${p.getParcelas()}" var="p">
+                <tr class="proposta">
+                    <td class="nParcela"><c:out value="${p.getNumParcela()}"/></td>
+                    <td class="Valor"><c:out value="${p.getVlrApagar()}"/></td>
+                    <td class="dtVencimento"><c:out value="${p.getDtVencimento()}"/></td>
+                    <td class="dtPagamento"><c:out value="${p.getDtPagamento()}"/></td>
+                    <td class="tdStatus"><c:out value="${p.getStatusPagamento()}"/></td>
+                </tr>
+            </c:forEach>
+        
+         
           
         </tbody>
       </table>

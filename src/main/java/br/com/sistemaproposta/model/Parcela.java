@@ -20,6 +20,16 @@ public class Parcela {
     Date DtPagamento;
     String statusPagamento;
 
+    public Parcela(int numParcela, float vlrApagar, Date dtVencimento, Date DtPagamento, String statusPagamento) {
+        this.numParcela = numParcela;
+        this.vlrApagar = vlrApagar;
+        this.dtVencimento = dtVencimento;
+        this.DtPagamento = DtPagamento;
+        this.statusPagamento = statusPagamento;
+    }
+    
+    
+
     public int getIdProposta() {
         return idProposta;
     }

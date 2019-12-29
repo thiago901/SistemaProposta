@@ -5,10 +5,8 @@
  */
 package br.com.sistemaproposta.action;
 
-import br.com.sistemaproposta.controller.DividaController;
 import br.com.sistemaproposta.controller.PropostaController;
 import br.com.sistemaproposta.model.ContraProposta;
-import br.com.sistemaproposta.model.Divida;
 import br.com.sistemaproposta.model.Proposta;
 import br.com.sistemaproposta.utilInterface.Executavel;
 import java.io.IOException;
@@ -27,7 +25,6 @@ public class CadastrarContraProposta implements Executavel{
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         int idProposta = Integer.parseInt(req.getParameter("idProposta"));
-        int idDivida = Integer.parseInt(req.getParameter("idDivida"));
         float vlrPrincipal = Float.parseFloat(req.getParameter("principal"));
         float vlrMultas = Float.parseFloat(req.getParameter("multas"));
         float vlrJuros = Float.parseFloat(req.getParameter("juros"));
@@ -45,10 +42,11 @@ public class CadastrarContraProposta implements Executavel{
         }
         
         ContraProposta contraProposta = new ContraProposta(proposta.getDivida(), vlrPrincipal, 
-                vlrMultas, vlrJuros, vlrDespesas, vlrJuros, qtdParcela, tipoProposta, proposta);
+                vlrMultas, vlrJuros, vlrDespesas, percHonorarios, qtdParcela, tipoProposta, proposta);
         
         contraProposta.salvar();
+        proposta.contraProposta();
                 
-        return "redirect:"+req.getContextPath()+"/input?action=FormContraProposta";
+        return "redirect:"+req.getContextPath()+"/input?action=AnaliseProposta&idProposta="+idProposta;
     }
 }

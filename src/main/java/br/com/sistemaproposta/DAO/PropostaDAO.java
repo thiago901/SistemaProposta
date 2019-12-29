@@ -8,10 +8,9 @@ package br.com.sistemaproposta.DAO;
 import br.com.sistemaproposta.ReflexaoController.Reflexao;
 import br.com.sistemaproposta.controller.DividaController;
 import br.com.sistemaproposta.model.Divida;
+import br.com.sistemaproposta.model.Parcela;
 import br.com.sistemaproposta.model.Proposta;
 import br.com.sistemaproposta.utilInterface.StatusProposta;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -115,10 +114,11 @@ public class PropostaDAO {
                 Divida divida = DividaController.getDivida(idDivida);
                 StatusProposta status = (StatusProposta)new Reflexao()
                         .retornaInstancia(pacote+"Proposta"+statusProposta);
+                List<Parcela> parcelas = getParcelas(idProposta);
 
                 return new Proposta(id, divida, vlrPrincipal, vlrMultas, vlrJuros,
                         vlrDespesas, perc_HO, qtdParcelas, tipoProposta, 
-                        statusPagamento, status, dtProposta, dtVencimento);
+                        statusPagamento, status, dtProposta, dtVencimento,parcelas);
             }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro de sintaxe",ex);
@@ -155,9 +155,11 @@ public class PropostaDAO {
                 
                 Divida divida = DividaController.getDivida(idDivida);
                 
+                List<Parcela> parcelas = getParcelas(id);
+                
                 Proposta p= new Proposta(id, divida, vlrPrincipal, vlrMultas, vlrJuros,
                         vlrDespesas, perc_HO, qtdParcelas, tipoProposta, 
-                        StatusPagamento, status, dtProposta, dtVencimento);
+                        StatusPagamento, status, dtProposta, dtVencimento,parcelas);
                 listaPropostas.add(p);
             }
             return listaPropostas;
@@ -185,6 +187,30 @@ public class PropostaDAO {
         }
         
     }
+
+    private static List<Parcela> getParcelas(int idProposta) {
+        String sql ="select * from parcela where idProposta =?;";
+        List<Parcela> parcelas = new ArrayList<>();
+        try {
+            PreparedStatement ps = DAO.abriConexao().prepareStatement(sql);
+            ps.setInt(1, idProposta);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int nParcela =rs.getInt("nParcela");
+                float vlrApagar=rs.getFloat("vlrApagar");
+                Date dtVencimento=rs.getDate("dtVencimento");
+                Date dtPagamento=rs.getDate("dtVencimento");
+                String statusPagamento=rs.getString("statusPagamento");
+
+                parcelas.add(new Parcela(nParcela, vlrApagar, dtVencimento, dtPagamento, statusPagamento));
+            }
+            return parcelas;
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro de sintaxe",ex);
+        }
+    }
+   
 
     
     

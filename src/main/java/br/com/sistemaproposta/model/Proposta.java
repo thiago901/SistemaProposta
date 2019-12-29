@@ -10,6 +10,8 @@ import br.com.sistemaproposta.utilInterface.StatusProposta;
 import br.com.sistemaproposta.utilmodel.PropostaPendente;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class Proposta {
     private Date dtVencimento;
     private List<Proposta> contraProposta = new ArrayList<>();
 
-    public Proposta(int id, Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta, String statusPagamento, StatusProposta statusProposta, Date dtProposta, Date dtVencimento) {
+    public Proposta(int id, Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta, String statusPagamento, StatusProposta statusProposta, Date dtProposta, Date dtVencimento,List<Parcela> parcelas) {
         this.id = id;
         this.divida = divida;
         this.vlrPrincipal = vlrPrincipal;
@@ -49,6 +51,7 @@ public class Proposta {
         this.statusProposta = statusProposta;
         this.dtProposta = dtProposta;
         this.dtVencimento = dtVencimento;
+        this.parcelas =parcelas;
     }
 
     public Proposta(Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta) {
@@ -183,5 +186,10 @@ public class Proposta {
         this.statusProposta.rejeitar(this);
         PropostaController.alterarStatus(this);
     }
+
+    public List<Parcela> getParcelas() {
+        return Collections.unmodifiableList(parcelas);
+    }
+    
 
 }

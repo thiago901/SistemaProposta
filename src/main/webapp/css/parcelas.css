@@ -25,10 +25,43 @@ and open the template in the editor.
     width: 80%;
     height: 80%;
     overflow-y: scroll;
-    display: none;
+    
+    
+    
     
     
 }
+.imgFechar{
+    width: 25px;
+    height: 25px;
+}
+.imgFechar:hover{
+    cursor: pointer;
+    
+}
+.divImg{
+    text-align: right;
+}
+.esconder{
+    
+    display: none;
+}
+.iconAbrir{
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}
+.iconAbrir:hover{
+    cursor: pointer;
+    
+}
+.qtdParcela{
+    display: inline-block;
+}
+.divQtdParcela{
+    text-align: center;
+}
+
 
 
 

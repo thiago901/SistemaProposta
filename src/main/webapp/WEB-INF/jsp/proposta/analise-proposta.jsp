@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/analise-proposta.css">
         <link rel="stylesheet" href="css/parcelas.css">
+        <link rel="stylesheet" href="css/contraProposta.css">
 
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Poppins&display=swap" rel="stylesheet">
     </head>
@@ -53,7 +54,9 @@
         </header>
 
         <div class="container">
-            <a href="/SistemaProposta/input?action=FormPropostaLista">Voltar</a>
+            <div class="divStatus ${p.getStatusProposta().getStatusProposta()}">
+                <p>Status: <c:out value="${p.getStatusProposta().getStatusProposta()}"/></p>
+            </div>
             <div class="dadosDivida">
                 <div class="dadosGerais">
                     <div class="">
@@ -156,7 +159,10 @@
                         </div>
                         <div class="">
                             <h6>Parcelas:</h6>
-                            <p><c:out value="${p.getQtdParcela()}"/></p>
+                            <div class="divQtdParcela">
+                                <p class="qtdParcela"><c:out value="${p.getQtdParcela()}"/></p>
+                                <img onclick="mostrarParcelas()" class="iconAbrir" src="img/abrir.png">
+                            </div>
                             <c:import url="parcelas.jsp"/>
                         </div>
 
@@ -176,10 +182,9 @@
                             <h6>Desc.: 50.000,00</h6>
                             <h6>% Desc.: 50%</h6>
                         </div>
-                        <div class="">
-                            <a href="/SistemaProposta/input?action=AlterarStatus&status=contra-proposta&idProposta=${p.getId()}">
-                                <button type="button" name="button" class="btnContraProposta">Contra Proposta</button>
-                            </a>
+                        <div class="divFormContraProposta">
+                            <c:import url="form-contra-proposta.jsp"/>
+                            <button onclick="mostrarContraProposta()" type="button" name="button" class="btnContraProposta">Contra Proposta</button>
                         </div>
                     </div>
 
@@ -196,10 +201,6 @@
                     </div>
 
                 </div>
-
-
-
-
                 <div class="botoes">
                     <a href="/SistemaProposta/input?action=AlterarStatus&status=rejeitar&idProposta=${p.getId()}">
                         <button type="button" name="button" class="btnRejeitar">Rejeitar</button>
@@ -211,9 +212,7 @@
                 </div>
 
             </div>
-
-
         </div>
-
+        <script src="js/proposta.js"></script>
     </body>
 </html>

@@ -4,55 +4,63 @@
     Author     : Thiago
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="pt">
-  <head>
-    <meta charset="utf-8">
-    <title>Inadimplencia</title>
-    <link rel="stylesheet" href="css/inadimplencia.css">
-  </head>
-  <body>
-    <div class="tela-fundo"></div>
-    <div class="main">
-      <h1>Proposta</h1>
-      <form action="/SistemaProposta/input?action=CadastrarContraProposta" method="Post">
+
+
+
+<div class="containerContraProposta">
+
+    <form autocomplete="off" action="/SistemaProposta/input?action=CadastrarContraProposta" method="Post">
 
         <div class="dadosContraProposta">
-          <label for="idProposta">cod Proposta</label>
-          <input id="idProposta" type="text" name="idProposta" value="">
             
-          <label for="idDivida">cod Divida</label>
-          <input id="idDivida" type="text" name="idDivida" value="">
-          <label for="vlrPrincipal">R$ Principal</label>
-          <input id="vlrPrincipal" type="text" name="principal" value="">
+            <div hidden="">
+                <label for="idProposta">idProposta</label>
+                <input id="idProposta" type="text" name="idProposta" value="${p.getId()}">
+            </div>
 
-          <label for="vlrMultas">R$ Multas</label>
-          <input id="vlrMultas" type="text" name="multas" value="">
+            <div>
+                <label for="vlrPrincipal">R$ Principal</label>
+                <input id="vlrPrincipal" type="text" name="principal" value="">
+            </div>
 
-          <label for="vlrJuros">R$ Juros</label>
-          <input id="vlrJuros" type="text" name="juros" value="">
+            <div>
+                <label for="vlrMultas">R$ Multas</label>
+                <input id="vlrMultas" type="text" name="multas" value="">
+            </div>
+            <div>
+                <label for="vlrJuros">R$ Juros</label>
+                <input id="vlrJuros" type="text" name="juros" value="">
+            </div>
 
-          <label for="vlrDespesas">R$ Despesas</label>
-          <input id="vlrDespesas" type="text" name="despesas" value="">
+            <div>
+                <label for="vlrDespesas">R$ Despesas</label>
+                <input id="vlrDespesas" type="text" name="despesas" value="">
+            </div>
 
-          <label for="percHonorarios">% Honorarios</label>
-          <input id="percHonorarios" type="text" name="perc-honorarios" value="">
+            <div>
+                <label for="percHonorarios">% Honorarios</label>
+                <input id="percHonorarios" type="text" name="perc-honorarios" value="">
+            </div>
 
-          <div class="tipo-proposta">
-            <input id="rd-quitacao"type="radio" name="tipo-proposta" value="Quitacao">
-            <label for="rd-quitacao">QuitaÃ§Ã£o</label>
-            <input id="rd-atualizacao" type="radio" name="tipo-proposta" value="Atualizacao">
-            <label for="rd-atualizacao">AtualizaÃ§Ã£o</label>
-          </div>
-          <label for="qtdParcela">Qtd Parcela</label>
-          <input id="qtdParcela" type="text" name="qtd-parcela" value="">
-
-
-
-
+            
+            <div>
+            <label for="qtdParcela">Qtd Parcela</label>
+            <input id="qtdParcela" type="text" name="qtd-parcela" value="">
+            </div>
+            <div class="tipo-proposta">
+                <div>
+                <input id="rd-quitacao"type="radio" name="tipo-proposta" value="Quitacao">
+                <label for="rd-quitacao">Quitação</label>
+                </div>
+                <div>
+                <input id="rd-atualizacao" type="radio" name="tipo-proposta" value="Atualizacao">
+                <label for="rd-atualizacao">Atualização</label>
+                </div>
+            </div>
         </div>
-        <button type="button" name="button">Cancelar</button>
-        <button type="submit" name="button">Salvar</button>
-      </form>
-    </div>
+        <button onclick="mostrarContraProposta()"  type="button" name="button">Cancelar</button>
+        
+        <button type="submit" name="button">Salvar</button>                        
+               
+    </form>
+</div>
