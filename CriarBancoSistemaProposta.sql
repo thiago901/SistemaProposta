@@ -89,24 +89,31 @@ CREATE TABLE proposta (
     perc_HO FLOAT,
     qtdParcelas INTEGER,
     tipoProposta varchar(20),
-    StatusPagamento VARCHAR (10),
     StatusProposta VARCHAR(14),
     dtProposta DATE,
-    dtVencimento DATE,
-    idContraProposta INTEGER,
     foreign key (idDivida) references divida(id)
     
 );
 
+ CREATE TABLE acordo (
+	id INTEGER auto_increment not null,
+    idProposta INTEGER  not null,
+    dtAcordo date,
+    dtVencimento date ,
+    status Varchar(20),
+    qtdParcelas integer,
+    primary key (id)
+    
+ );
  CREATE TABLE parcela (
-    idProposta INTEGER not null,
+    idAcordo INTEGER not null,
     nParcela INTEGER not null,
     vlrApagar FLOAT not null,
-	dtVencimento date,
-    dtPagamento date,
+	dtPagamento date,
+    dtVencimento date,
     statusPagamento Varchar(20),
-    PRIMARY KEY (idProposta, nParcela),
-    foreign key (idProposta) references proposta(id)
+    PRIMARY KEY (idAcordo, nParcela),
+    foreign key (idAcordo) references acordo(id)
 );
 
 

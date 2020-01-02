@@ -1,178 +1,218 @@
-.container{
-  margin: 5px auto;
-  padding: 10px;
-  width: 90%;
-  height: 100%;
-  border: 2px solid #000;
-
+/*
+Vermelho: #FD3B77;
+Verde: #77FD3B;
+Azul: #3B77FD;
+Preto: #2d3436;
+Cinza: #636e72;
+Cinza-Claro: #b2bec3;
+Branco: #dfe6e9;
+*/
+*{
+	font-family: 'PT Sans', sans-serif;
+	box-sizing: border-box;
 }
-.divStatus{
-    margin-bottom: 5px;
-    padding: 5px;
-    text-align: center;
+.header{
+	background-color: #2d3436;
+	position: fixed;
+	height: 100%;
+	width: 20%;
+	box-shadow: 2px 0px 5px;
 }
-.divStatus a{
-    color: #000;
-    font-size: 80%;
-}
-.divStatus a    :hover{
+.header a{
+    text-decoration: none;
     color: #fff;
 }
-.ContraProposta{
-    background: #fdcb6e;
-}
-.Pendente{
-    border: 1px solid #000;
-}
-.Aprovado{
-    background: #6ba8a9;
-    color: #fff;
-}
-.Rejeitada{
-    background: #ff7675;
-    color: #fff;
-}
-.dadosGerais,.valoresDivida{
-  text-align: center;
-  display: grid;
-}
-.dadosGerais{
-  grid-template-columns: 33% 33% 33%;
+.menu >li{
+	padding: 10px;
+	margin: 5px ;
+	border-left: 3px solid #3B77FD;
+	color: #dfe6e9;
+	font-family: 'PT Sans', sans-serif;
+	text-align: center;
 
 }
-.dadosDivida{
-  border: 1px solid #000;
-
-  margin: 0 auto;
-}
-.valoresDivida{
-  	grid-template-columns: 20% 20% 20% 20% 20%;
-}
-.textArea{
-  background: none;
-  padding: 5px;
-  width: 100%;
-  text-align: justify;
-}
-
-.resumo h6{
-  text-align: left;
-  padding: 2px;
-
-
-}
-.tipoProposta{
-  display:grid;
-  text-align: left;
-
-
+.menu >li:hover{
+	background-color: #636e72;
+	border-left: 5px solid #3B77FD;
+	transition: .5s background;
+	cursor: pointer;
 
 }
 
-.proposta-mensagem{
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin-top: 5px;
+.main{
+	background-color: #dfe6e9;
+	height: 100vh;
+	margin-left: 20%;
+
+	overflow-y: hidden;
 
 
 }
-.dadosProposta{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 97%;
-  height: 100%;
-  text-align: center;
-  align-items: center;
-  border: 1px solid #000;
-
-
-
+.proposta{
+	width: 90%;
+	margin: 0 auto;
 }
-.dadosProposta div{
-  padding: 5px;
+.status{
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 150%;
+	font-weight: bolder;
+	border-bottom: 2px solid #77FD3B;
 }
-.mensagens{
-  padding: 10px;
-  height: 100%;
-  width: 100%;
-  border: 1px solid #000;
-
-
-
-}
-
-.dadosDivida div{
-  padding: 5px;
-
-}
-.escreverMensagemEnviar{
-  display: grid;
-  grid-template-columns: 80% 20%;
-  align-items: center;
-
-
-}
-.escreveMensagem{
-  width: 100%;
+.group-dados-gerais{
+	display: flex;
+	justify-content: space-around;
 }
 
 
-/*===================botoes=====================*/
-.botoes {
-  text-align: right;
-  padding: 10px;
+.group-dados-divida{
+	display: grid;
+	grid-template-columns: repeat(5,1fr);
+
+}
+.group {
+	margin-bottom: 30px;
+}
+.group div h6{
+	text-align: left;
+	padding: 5px;
+	font-size: 90%;
+
+}
+.group div h5{
+	text-align: center;
+	font-size: 110%;
+	padding: 5px;
+	font-weight: bolder;
+
+}
+.group-dados-proposta-mensagem{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.group-dados-proposta{
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-gap: 5px;
+	width: 100%;
+	align-items: center;
+
+}
+.mensagem {
+	padding: 10px;
+	margin-left: 20px;
+	width: 100%;
+	height: 50vh;
+	overflow-x: hidden;
+
+}
+.mensagem textarea {
+	display: block;
+	height: 80%;
+	width: 100%;
+	resize: none;
+	overflow-y: scroll;
+	border-radius: 5px;
+
+}
+.mensagem input {
+	display: block;
+	text-align: left;
+	margin-top: 10px;
+	width: 70%;
+	height: 2em;
+	background: none;
+	padding: 10px;
+	border:none;
+	border-bottom: 2px solid #b2bec3;
+}
+.salvar-mensagem{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	align-items: baseline;
+}
+.total{
+	grid-column: 1/span 2;
+	font-family: 'Overpass', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 
 }
 
-.btnAprovar,.btnRejeitar,.btnContraProposta,.btnEnviar{
-  border: none;
-  height: 35px;
-  font-size: 90%;
+.group-dados-proposta div:nth-child(n+8){
+	margin-top: 20px;
+}
+.total p{
+	text-align: center;
+}
+.total h6{
+	text-align: center;
+	font-weight: bold;
 }
 
-.btnAprovar:hover,.btnRejeitar:hover,.btnContraProposta:hover,.btnEnviar:hover{
-  cursor: pointer;
-  transition: .2s;
+/*-----------------Botoes-----------------
+	Vermelho: #FD3B77;
+	Verde: #77FD3B;
+	Azul: #3B77FD;
+	Preto: #2d3436;
+	Cinza: #636e72;
+	Cinza-Claro: #b2bec3;
+	Branco: #dfe6e9;
+*/
+.btn-mensagem{
+	border: 1px solid #b2bec3;
+	background: none;
+	font-family: 'PT Sans', sans-serif;
+	height: 2em;
+	width: 6em;
+	font-weight: bold;
+	font-size: 90%;
+	text-align: center;
+	border-radius: 5px;
 }
-.btnAprovar{
-  background: #6ba8a9;
-  color: #fff;
-  width: 10%;
+.btn-mensagem:hover{
+	background: #77FD3B;
+	transition: .5s background;
+	cursor: pointer;
+}
+.btn-acao{
+	border: 1px solid #b2bec3;
+	background: none;
+	font-family: 'PT Sans', sans-serif;
+	height: 2em;
+	width: 9em;
+	font-weight: bold;
+	font-size: 100%;
+	text-align: center;
+	border-radius: 5px;
+}
 
-}
-.btnAprovar:hover{
-  background: #1d4d4f;
-
-}
-.btnRejeitar{
-  background: #efefef;
-  color: #000;
-  width: 10%;
-}
-
-.btnRejeitar:hover{
-  background:#ff7675;
-  color: #fff;
-}
-.btnContraProposta{
-  background: #efefef;
-  color: #000;
-  width: 100%;
+.divBtnContraProposta{
+	text-align: center;
 }
 .btnContraProposta:hover{
-  background: #fdcb6e;
-  color: #fff;
-
+	background:  #3B77FD;
+	color: #fff;
+	transition: .5s background;
+	cursor: pointer;
 }
-.btnEnviar{
-
-
-  width: 100%;
-  margin-left: 5px;
-
+.btns{
+	text-align: right;
 }
-.btnEnviar:hover{
-  background: #fdcb6e;
-  color: #fff;
-
+.btnCancelar:hover{
+	background: #FD3B77;
+	color: #fff;
+	transition: .5s background;
+	cursor: pointer;
+}
+.btnProposta:hover{
+	background: #77FD3B;
+	transition: .5s background;
+	cursor: pointer;
 }

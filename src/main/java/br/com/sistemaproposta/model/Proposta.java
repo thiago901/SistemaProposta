@@ -8,12 +8,8 @@ package br.com.sistemaproposta.model;
 import br.com.sistemaproposta.controller.PropostaController;
 import br.com.sistemaproposta.utilInterface.StatusProposta;
 import br.com.sistemaproposta.utilmodel.PropostaPendente;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -29,15 +25,12 @@ public class Proposta {
     private float vlrDespesas;
     private float percHO;
     private int qtdParcela;
-    private List<Parcela> parcelas = new ArrayList<>();
     private String tipoProsposta;
-    private String statusPagamento;
     private StatusProposta statusProposta;
     private Date dtProposta;
-    private Date dtVencimento;
-    private List<Proposta> contraProposta = new ArrayList<>();
+    
 
-    public Proposta(int id, Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta, String statusPagamento, StatusProposta statusProposta, Date dtProposta, Date dtVencimento,List<Parcela> parcelas) {
+    public Proposta(int id, Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta, StatusProposta statusProposta, Date dtProposta) {
         this.id = id;
         this.divida = divida;
         this.vlrPrincipal = vlrPrincipal;
@@ -47,11 +40,8 @@ public class Proposta {
         this.percHO = percHO;
         this.qtdParcela = qtdParcela;
         this.tipoProsposta = tipoProsposta;
-        this.statusPagamento = statusPagamento;
         this.statusProposta = statusProposta;
         this.dtProposta = dtProposta;
-        this.dtVencimento = dtVencimento;
-        this.parcelas =parcelas;
     }
 
     public Proposta(Divida divida, float vlrPrincipal, float vlrMultas, float vlrJuros, float vlrDespesas, float percHO, int qtdParcela, String tipoProsposta) {
@@ -63,10 +53,8 @@ public class Proposta {
         this.percHO = percHO;
         this.qtdParcela = qtdParcela;
         this.tipoProsposta = tipoProsposta;
-        this.statusPagamento = "Aberto";
         this.statusProposta = new PropostaPendente();
         this.dtProposta = Calendar.getInstance().getTime();
-        this.dtVencimento = this.dtProposta;
     }
 
     public int getId() {
@@ -137,14 +125,6 @@ public class Proposta {
         this.tipoProsposta = tipoProsposta;
     }
 
-    public String getStatusPagamento() {
-        return statusPagamento;
-    }
-
-    public void setStatusPagamento(String statusPagamento) {
-        this.statusPagamento = statusPagamento;
-    }
-
     public StatusProposta getStatusProposta() {
         return statusProposta;
     }
@@ -155,10 +135,6 @@ public class Proposta {
 
     public Date getDtProposta() {
         return dtProposta;
-    }
-
-    public Date getDtVencimento() {
-        return dtVencimento;
     }
 
     public void salvar() {
@@ -175,7 +151,6 @@ public class Proposta {
 
     public void contraProposta() {
         this.statusProposta.contraProposta(this);
-
     }
 
     public void pendente() {
@@ -186,10 +161,5 @@ public class Proposta {
         this.statusProposta.rejeitar(this);
         PropostaController.alterarStatus(this);
     }
-
-    public List<Parcela> getParcelas() {
-        return Collections.unmodifiableList(parcelas);
-    }
-    
 
 }

@@ -6,213 +6,167 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="pt">
+<!DOCTYPE html>
+<html>
     <head>
-        <meta charset="utf-8">
         <title>Proposta</title>
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/analise-proposta.css">
-        <link rel="stylesheet" href="css/parcelas.css">
-        <link rel="stylesheet" href="css/contraProposta.css">
-
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/analise-proposta.css">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <header>
-            <nav class="menu">
-                <ul>
-                    <li><a href="">Pagina Inicial</a></li>
-                    <li><a href="">Administradora</a>
-                        <ul>
-                            <li><a href="#">Cadastrar</a></li>
-                            <li><a href="#">Listar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Assessoria</a>
-                        <ul>
-                            <li><a href="#">Cadastrar</a></li>
-                            <li><a href="#">Listar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Divida</a>
-                        <ul>
-                            <li><a href="#">Cadastrar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Proposta</a>
-                        <ul>
-                            <li><a href="#">Cadastrar</a></li>
-                            <li><a href="#">Lista de Analise</a></li>
-                        </ul>
-                    </li>
-                    <li class="contato"><a href="">Contato</a></li>
-                </ul>
-
-            </nav>
+        <header class="header">
+            <img src="img/icon-menu-close.svg" alt="">
+            <ul class="menu">
+                <li>Acao 1</li>
+                <li>Acao 2</li>
+                <li>Acao 3</li>
+                <li>Acao 4</li>
+                <li>Acao 5</li>
+                <li><a href="input?action=FormPropostaLista">Listar Propostas</a></li>
+            </ul>
         </header>
+        <main class="main">
 
-        <div class="container">
-            <div class="divStatus ${p.getStatusProposta().getStatusProposta()}">
-                <p>Status: <c:out value="${p.getStatusProposta().getStatusProposta()}"/></p>
-            </div>
-            <div class="dadosDivida">
-                <div class="dadosGerais">
-                    <div class="">
-                        <h6>Numero do Contrato</h6>
-                        <p><c:out value="${p.getDivida().getContrato().getNumContrato()}"/></p>
+            <section class="proposta">
+                <p class="status">Status: <c:out value="${p.getStatusProposta().getStatusProposta()}"/></p>
+                <section class="group-dados-gerais group">
+                    <div>
+                        <h6>Grupo e Cota</h6>
+                        <h5><c:out value="${p.getDivida().getContrato().getNumContrato()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>Assessoria</h6>
+                        <h5><c:out value="${p.getDivida().getContrato().getAssessoria().getNome()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>Administradora</h6>
+                        <h5><c:out value="${p.getDivida().getContrato().getAdministradora().getNome()}"/></h5>
+                    </div>
+                </section>
+                <section class="group-dados-divida group">
+
+                    <div>
+                        <h6>R$ Principal</h6>
+                        <h5><c:out value="${p.getDivida().getVlrPrincipal()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>R$ Multas</h6>
+                        <h5><c:out value="${p.getDivida().getVlrMultas()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>R$ Juros</h6>
+                        <h5><c:out value="${p.getDivida().getVlrJuros()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>R$ Despesas</h6>
+                        <h5><c:out value="${p.getDivida().getVlrDespesas()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>% Honorarios</h6>
+                        <h5><c:out value="${p.getDivida().getPercHonorarios()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>R$ Categoria</h6>
+                        <h5><c:out value="${p.getDivida().getVlrCategoria()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>% Saldo Devedor</h6>
+                        <h5><c:out value="${p.getDivida().getPercSaldoDevedor()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>R$ POS</h6>
+                        <h5><c:out value="${p.getDivida().getVlrPos()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>R$ Debitos do Bem</h6>
+                        <h5><c:out value="${p.getDivida().getVlrDebitoBem()}"/></h5>
+                    </div>
+                    <div>
+                        <h6>Dias em Atraso</h6>
+                        <h5><c:out value="${p.getDivida().getDtAtraso()}"/></h5>
                     </div>
 
-                    <div class="">
-                        <h6>Nome Assessoria:</h6>
-                        <p><c:out value="${p.getDivida().getContrato().getAssessoria().getNome()}"/></p>
-                    </div>
-                    <div class="">
-                        <h6>Nome Administradora:</h6>
-                        <p><c:out value="${p.getDivida().getContrato().getAdministradora().getNome()}"/></p>
-                    </div>
+                </section>
+                <section class="group-dados-proposta-mensagem">
+                    <section class="group-dados-proposta group">
 
-                </div>
-                <div class="valoresDivida">
-
-                    <div class="">
-                        <h6>R$ Principal:</h6>
-                        <p><c:out value="${p.getDivida().getVlrPrincipal()}"/></p>
-                    </div>
-                    <div class="">
-                        <h6>R$ Multas:</h6>
-                        <p><c:out value="${p.getDivida().getVlrMultas()}"/></p>
-                    </div>
-
-                    <div class="">
-                        <h6>R$ Juros:</h6>
-                        <p><c:out value="${p.getDivida().getVlrJuros()}"/></p>
-                    </div>
-
-                    <div class="">
-                        <h6>R$ Despesas:</h6>
-                        <p><c:out value="${p.getDivida().getVlrDespesas()}"/></p>
-                    </div>
-
-                    <div class="">
-                        <h6>% Honorarios:</h6>
-                        <p><c:out value="${p.getDivida().getPercHonorarios()}"/></p>
-                    </div>
-
-                    <div class="">
-                        <h6>R$ Categoria:</h6>
-                        <p><c:out value="${p.getDivida().getVlrCategoria()}"/></p>
-                    </div>
-
-                    <div class="">
-                        <h6>R$ Saldo Devedor:</h6>
-                        <p><c:out value="${p.getDivida().getPercSaldoDevedor()}"/></p>
-                    </div>
-
-                    <div class="">
-                        <h6>R$ POS:</h6>
-                        <p><c:out value="${p.getDivida().getVlrPos()}"/></p>
-                    </div>
-
-                    <div class="">
-                        <h6>R$ POS:</h6>
-                        <p><c:out value="${p.getDivida().getVlrPos()}"/></p>
-                    </div>
-
-                    <div class="">
-                        <h6>Data do Atraso:</h6>
-                        <p><c:out value="${p.getDivida().getDtAtraso()}"/></p>
-                    </div>
-
-
-                </div>
-            </div>
-
-            <div class="proposta">
-
-
-                <div class="proposta-mensagem">
-                    <div class="dadosProposta">
-                        <div class="">
-                            <h6>R$ Principal:</h6>
-                            <p><c:out value="${p.getVlrPrincipal()}"/></p>
+                        <div>
+                            <h6>R$ Principal</h6>
+                            <h5><c:out value="${p.getVlrPrincipal()}"/></h5>
                         </div>
-
-                        <div class="">
-                            <h6>R$ Multas:</h6>
-                            <p><c:out value="${p.getVlrMultas()}"/></p>
+                        <div>
+                            <h6>R$ Multas</h6>
+                            <h5><c:out value="${p.getVlrMultas()}"/></h5>
+                        </div>
+                        <div>
+                            <h6>R$ Juros</h6>
+                            <h5><c:out value="${p.getVlrJuros()}"/></h5>
+                        </div>
+                        <div>
+                            <h6>R$ Despesas</h6>
+                            <h5><c:out value="${p.getVlrDespesas()}"/></h5>
+                        </div>
+                        <div>
+                            <h6>% Honorarios</h6>
+                            <h5><c:out value="${p.getPercHO()}"/></h5>
+                        </div>
+                        <div>
+                            <h6>Parcelas</h6>
+                            <h5><c:out value="${p.getQtdParcela()}"/></h5>
                         </div>
                         <div class="">
-                            <h6>R$ Juros:</h6>
-                            <p><c:out value="${p.getVlrJuros()}"/></p>
+                            <h6>Tipo de Proposta</h6>
+                            <h5><c:out value="${p.getTipoProsposta()}"/></h5>
                         </div>
-
-                        <div class="">
-                            <h6>R$ Despesas:</h6>
-                            <p><c:out value="${p.getVlrDespesas()}"/></p>
-                        </div>
-
-                        <div class="">
-                            <h6>% Honorarios:</h6>
-                            <p><c:out value="${p.getPercHO()}"/></p>
-                        </div>
-                        <div class="">
-                            <h6>Parcelas:</h6>
-                            <div class="divQtdParcela">
-                                <p class="qtdParcela"><c:out value="${p.getQtdParcela()}"/></p>
-                                <img onclick="mostrarParcelas()" class="iconAbrir" src="img/abrir.png">
+                        <div class="total">
+                            <div class="">
+                                <h6>Valor Total:</h6>
+                                <p>50.000,00</p>
                             </div>
-                            <c:import url="parcelas.jsp"/>
+                            <div class="">
+                                <h6>Valor Desconto:</h6>
+                                <p>25.000,00</p>
+                            </div>
+
+                            <div class="">
+                                <h6>% Desconto: </h6>
+                                <p>54%</p>
+                            </div>
+
+
                         </div>
 
-                        <div class="tipoProposta">
-                            <div class="atualizacao">
-                                <input id="tpAtualizacao" type="radio" name="tipo" value="Atualizacao">
-                                <label for="tpAtualizacao">Atualização</label>
-                            </div>
-                            <div class="quitacao">
-                                <input id="tpQuitacao" type="radio" name="tipo" value="Quitacao">
-                                <label for="tpQuitacao">Quitação</label>
-
-                            </div>
-                        </div>
-                        <div class="resumo">
-                            <h6>Total: 1.150.150.000,00</h6>
-                            <h6>Desc.: 50.000,00</h6>
-                            <h6>% Desc.: 50%</h6>
-                        </div>
-                        <div class="divFormContraProposta">
-                            <c:import url="form-contra-proposta.jsp"/>
-                            <button onclick="mostrarContraProposta()" type="button" name="button" class="btnContraProposta">Contra Proposta</button>
+                    </section>
+                    <div class="mensagem">
+                        <textarea cols="250" disabled >
+                            <c:forEach items="${m}" var="m">
+                                <c:out value="${m.getConvesa()}"/>
+                            </c:forEach>
+                        </textarea>
+                        <div class="salvar-mensagem">
+                            <input type="text" name="">
+                            <a href="input?action=CadastrarMensagem&idProposta=${p.getId()}&texto=testandooooooo">
+                                <button type="button" name="button" class="btn-mensagem">Salvar</button>
+                            </a>
                         </div>
                     </div>
 
+                </section>
 
-                    <div class="mensagens">
-                        <div class="mensagen">
-                            <textarea class="textArea" name="name" rows="8" cols="65">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                        </div>
-                        <div class="escreverMensagemEnviar">
-                            <textarea class="escreveMensagem" name="name" rows="2" cols="50"></textarea>
-                            <button type="button" name="button" class="btnEnviar">Salvar</button>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="botoes">
-                    <a href="/SistemaProposta/input?action=AlterarStatus&status=rejeitar&idProposta=${p.getId()}">
-                        <button type="button" name="button" class="btnRejeitar">Rejeitar</button>
+                <div class="btns">
+                    <a href="input?action=AlterarStatus&status=rejeitar&idProposta=${p.getId()}">
+                        <button class="btn-acao btnCancelar">Rejeitar</button>
                     </a>
-                    <a href="/SistemaProposta/input?action=AlterarStatus&status=aprovar&idProposta=${p.getId()}">
-                        <button type="button" name="button" class="btnAprovar">Aprovar</button>
+                    <a href="input?action=AlterarStatus&status=aprovar&idProposta=${p.getId()}">
+                        <button class="btn-acao btnProposta">Aprovar</button>
                     </a>
-
                 </div>
+            </section>
 
-            </div>
-        </div>
-        <script src="js/proposta.js"></script>
+
+        </main>
     </body>
 </html>
