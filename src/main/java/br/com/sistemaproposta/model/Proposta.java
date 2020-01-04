@@ -143,18 +143,8 @@ public class Proposta {
 
     public void aprova() {
         this.statusProposta.aprovar(this);
-    }
-
-    public void cancela() {
-        this.statusProposta.cancelar(this);
-    }
-
-    public void contraProposta() {
-        this.statusProposta.contraProposta(this);
-    }
-
-    public void pendente() {
-        this.statusProposta.pendente(this);
+        Acordo a = new Acordo(this);
+        a.criarAcordo();
     }
 
     public void rejeitarProposta() {

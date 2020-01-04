@@ -5,6 +5,7 @@
  */
 package br.com.sistemaproposta.model;
 
+import br.com.sistemaproposta.controller.ParcelaController;
 import java.util.Date;
 
 /**
@@ -13,29 +14,36 @@ import java.util.Date;
  */
 public class Parcela {
     
-    int idProposta;
+    Acordo acordo;
     int numParcela;
     float vlrApagar;
     Date dtVencimento;
     Date DtPagamento;
     String statusPagamento;
 
-    public Parcela(int numParcela, float vlrApagar, Date dtVencimento, Date DtPagamento, String statusPagamento) {
+  
+
+    public Parcela(Acordo acordo, int numParcela, float vlrApagar, Date dtVencimento, Date DtPagamento, String statusPagamento) {
+        this.acordo = acordo;
         this.numParcela = numParcela;
         this.vlrApagar = vlrApagar;
         this.dtVencimento = dtVencimento;
         this.DtPagamento = DtPagamento;
         this.statusPagamento = statusPagamento;
     }
+
+    public Parcela(Acordo acordo) {
+        this.acordo = acordo;
+    }
     
     
 
-    public int getIdProposta() {
-        return idProposta;
+    public Acordo getAcordo() {
+        return acordo;
     }
 
-    public void setIdProposta(int idProposta) {
-        this.idProposta = idProposta;
+    public void setAcordo(Acordo idAcordo) {
+        this.acordo = idAcordo;
     }
 
     public int getNumParcela() {
@@ -76,6 +84,10 @@ public class Parcela {
 
     public void setStatusPagamento(String statusPagamento) {
         this.statusPagamento = statusPagamento;
+    }
+
+    public void criarParcelas() {
+        ParcelaController.criarParcelas(this);
     }
     
 

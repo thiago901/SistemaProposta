@@ -24,7 +24,7 @@ public class CadastrarMensagem implements Executavel{
         int idProposta = Integer.parseInt(req.getParameter("idProposta"));
         String mensagem = req.getParameter("texto");     
         
-        Mensagem m = new Mensagem(idProposta, mensagem);
+        Mensagem m = new Mensagem(idProposta, mensagem.trim());
         m.salvar();
                 
         return "redirect:"+req.getContextPath()+"/input?action=AnaliseProposta&idProposta="+idProposta;

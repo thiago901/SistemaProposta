@@ -141,11 +141,15 @@
 
                     </section>
                     <div class="mensagem">
-                        <textarea cols="250" disabled >
+                        <div class="conteudo-mensagem">
                             <c:forEach items="${m}" var="m">
-                                <c:out value="${m.getConvesa()}"/>
+                                <p><c:out value="${m.getConvesa()}"/></p>
+                                <p><c:out value="${m.getConvesa()}"/></p>
+                                <p><c:out value="${m.getConvesa()}"/></p>
+                                <p><c:out value="${m.getConvesa()}"/></p>
                             </c:forEach>
-                        </textarea>
+                        </div>
+                        
                         <div class="salvar-mensagem">
                             <input type="text" name="">
                             <a href="input?action=CadastrarMensagem&idProposta=${p.getId()}&texto=testandooooooo">

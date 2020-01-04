@@ -32,9 +32,6 @@ public class AlterarStatus implements Executavel{
             case "rejeitar":
                 p.rejeitarProposta();
                 break;
-            case "contra-proposta":
-                p.contraProposta();
-                break;
             default:
                 throw new RuntimeException("Status não foi definido");
         }
