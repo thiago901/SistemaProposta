@@ -12,21 +12,15 @@
         <title>Proposta</title>
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/analise-proposta.css">
+        <link rel="stylesheet" type="text/css" href="css/menu.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <header class="header">
-            <img src="img/icon-menu-close.svg" alt="">
-            <ul class="menu">
-                <li>Acao 1</li>
-                <li>Acao 2</li>
-                <li>Acao 3</li>
-                <li>Acao 4</li>
-                <li>Acao 5</li>
-                <li><a href="input?action=FormPropostaLista">Listar Propostas</a></li>
-            </ul>
+            <c:import url="../menu.jsp"/>
         </header>
         <main class="main">
 
@@ -144,17 +138,14 @@
                         <div class="conteudo-mensagem">
                             <c:forEach items="${m}" var="m">
                                 <p><c:out value="${m.getConvesa()}"/></p>
-                                <p><c:out value="${m.getConvesa()}"/></p>
-                                <p><c:out value="${m.getConvesa()}"/></p>
-                                <p><c:out value="${m.getConvesa()}"/></p>
                             </c:forEach>
                         </div>
                         
                         <div class="salvar-mensagem">
-                            <input type="text" name="">
-                            <a href="input?action=CadastrarMensagem&idProposta=${p.getId()}&texto=testandooooooo">
-                                <button type="button" name="button" class="btn-mensagem">Salvar</button>
-                            </a>
+                            <input type="text" name="" id="textoDigitado">
+                            
+                                <button type="button" name="button" class="btn-mensagem" onclick="salvarMensagem(${p.getId()})">Salvar</button>
+                            
                         </div>
                     </div>
 
@@ -172,5 +163,6 @@
 
 
         </main>
+                        <script src="js/mensagem.js"></script>
     </body>
 </html>

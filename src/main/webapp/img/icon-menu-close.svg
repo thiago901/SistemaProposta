@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg  width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>FD6C8361-F7D5-43D5-B961-67BADEE0C92C</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="NAV" transform="translate(-19.000000, -26.000000)">
+            <g id="icon-menu-close" transform="translate(19.000000, 26.000000)">
+                <circle id="Oval-3" fill="#1C1F22" cx="20" cy="20" r="20"></circle>
+                <g id="ui-24px-outline-3_slide-left" transform="translate(8.000000, 14.000000)" stroke-width="2">
+                    <g id="Group">
+                        <path d="M21,6 L1,6" id="Shape" stroke="#32A7E5"></path>
+                        <path d="M21,0 L9,0" id="Shape" stroke="#BCC2C6"></path>
+                        <path d="M21,12 L9,12" id="Shape" stroke="#BCC2C6"></path>
+                        <polyline id="Shape" stroke="#32A7E5" points="4 2 0 6 4 10"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
