@@ -1,4 +1,13 @@
-*{
+*,label{
 	font-family: 'PT Sans', sans-serif;
 	box-sizing: border-box;
+}
+
+input{
+	background: none;
+	border:1px solid #b2bec3;
+	border-radius: 2px;
+	padding: 5px;
+	appearance: textfield;
+	outline: 0;
 }

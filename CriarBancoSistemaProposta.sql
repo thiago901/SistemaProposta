@@ -125,4 +125,9 @@ CREATE TABLE conversa (
     foreign key (idProposta) references proposta(id)
 );
  
+ CREATE TABLE usr (
+    id INTEGER PRIMARY KEY,
+    login VARCHAR(50),
+    password varchar(50)
+);
 

@@ -1,0 +1,75 @@
+
+.container{
+  display: flex;
+  height: 100vh;
+
+}
+.img{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/proposta-capa.jfif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
+.titulo{
+  color: #FFF;
+  font-size: 300%;
+  font-weight: bold;
+  font-family: 'Questrial', sans-serif;
+  text-align: center;
+}
+.detalhes{
+  color: #FFF;
+  line-height: 1.5;
+  font-size: 120%;
+  text-indent: 1.5em;
+  text-align: justify;
+  margin-top: 20px;
+}
+.info{
+  position: relative;
+  padding: 10px;
+  background: rgba(45,52,54,.5);
+  width: 70%;
+/*  background-image: url("../img/proposta-capa.jfif");
+  background-repeat: no-repeat;
+  background-size: cover;*/
+
+}
+
+.login{
+  width: 30%;
+}
+
+.form{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.form .field{
+  width: 70%;
+  margin-bottom: 5%;
+}
+.form input{
+  width: 100%;
+}
+.form label{
+  display: block;
+  margin-bottom: 2%;
+}
+.botoes button{
+  border: none;
+  padding: 7px 15px;
+
+}
+.botoes button:hover{
+  cursor: pointer;
+}

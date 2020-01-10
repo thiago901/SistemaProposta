@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class DAO implements AutoCloseable{
     protected static final String USER="root";
-    protected static final String PASSWORD="adminadmin";
+    protected static final String PASSWORD="adminadmin";//!zxcASD30
     protected static final String URL = "jdbc:mysql://localhost:3306/sistemaProposta?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     protected static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     protected static Connection conexao;

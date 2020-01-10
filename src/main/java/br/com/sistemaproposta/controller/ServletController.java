@@ -13,12 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Thiago
  */
-@WebServlet(name = "ServletController", urlPatterns = {"/input"})
+@WebServlet(urlPatterns = {"/input"})
 public class ServletController extends HttpServlet {
 
     @Override
@@ -26,31 +27,27 @@ public class ServletController extends HttpServlet {
         
         String action = req.getParameter("action");
         String pacote = "br.com.sistemaproposta.action.";
-
+  
         Object retorno = new Reflexao()
-                .refleteClasse(pacote+action)
-                .criaInstancia()
-                .getMetodo("execute",HttpServletRequest.class,HttpServletResponse.class)
-                .invoca(req,resp);
-        
-        
+            .refleteClasse(pacote+action)
+            .criaInstancia()
+            .getMetodo("execute",HttpServletRequest.class,HttpServletResponse.class)
+            .invoca(req,resp);
+
         String array[] = String.valueOf(retorno).split(":");
-        
+
         if(array[0].equals("redirect")){
             resp.sendRedirect(array[1]);
         }else{
             RequestDispatcher rd = req.getRequestDispatcher(array[1]);
             rd.forward(req, resp);
-            
+
         }
+            
         
         
         
-        
-        
-        
-        
-        
+
     }
     
 

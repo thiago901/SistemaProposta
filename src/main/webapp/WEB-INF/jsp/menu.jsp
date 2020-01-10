@@ -7,4 +7,5 @@
     <li><a href="input?action=FormDivida">Cadastrar Dívida</a></li>
     <li><a href="input?action=FormProposta">Cadastrar Proposta</a></li>
     <li><a href="input?action=FormPropostaLista">Listar Propostas</a></li>
+    <li><a href="input?action=Logout">Logout</a></li>
 </ul>
